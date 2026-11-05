@@ -7,298 +7,369 @@
 <meta name="description" content="Demo concept of a new website for Kootenia Homes, custom home builder and remodeler in Woodbury, Minnesota. Not the official website.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src https://www.openstreetmap.org; form-action 'none'; base-uri 'none'">
-<meta name="theme-color" content="#15181b">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2315181b'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%23b08d57'%3EK%3C/text%3E%3C/svg%3E">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src https://www.openstreetmap.org; form-action 'none'; base-uri 'none'">
+<meta name="theme-color" content="#2b2b2c">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" href="assets/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/source-serif-4.woff2) format("woff2");font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/source-serif-4-i.woff2) format("woff2");font-weight:200 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Public Sans";src:url(assets/fonts/public-sans.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 :root{
-  --ink:#15181b; --ink2:#232a2f; --cream:#f7f3ec; --paper:#ffffff; --line:#e3dccf;
-  --brass:#b08d57; --brass-d:#7a5f2f; --muted:#555b62; --ok:#2f6b46;
-  --serif:Georgia,"Times New Roman",Times,serif;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --r:10px; --w:1180px; --gut:20px;
+  --bg:#ffffff; --soft:#f1f0ed; --ink:#232324; --mute:#5c5c5e; --line:#d9d8d4;
+  --acc:#2d4a3b; --acc2:#1f352a; --dark:#232324;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --gut:clamp(20px,4vw,56px); --max:1320px; --db:40px; --hh:84px;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.55;font-size:17px;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:100px;-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img,video{max-width:100%;display:block}
-a{color:var(--brass-d)}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;margin:0;letter-spacing:.2px}
-h2{font-size:clamp(28px,4vw,42px)}
+a{color:var(--acc)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.015em;line-height:1.12}
+h2{font-size:clamp(32px,3.9vw,54px)}
 h3{font-size:22px}
 p{margin:0 0 1em}
-.wrap{max-width:var(--w);margin:0 auto;padding:0 var(--gut)}
-.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 14px;z-index:100}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+section{padding:clamp(60px,7.5vw,112px) 0}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:100}
 .skip:focus{left:8px;top:8px}
-:focus-visible{outline:3px solid #1d6fd1;outline-offset:2px}
-.demo-bar{background:#f0e6d0;color:#3a2f16;font-size:14px;text-align:center;padding:8px var(--gut);border-bottom:1px solid #dccca8}
-.demo-bar a{color:#3a2f16;font-weight:600}
-.demo-bar.foot{border:0;border-top:1px solid #dccca8;margin-top:0}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.lead{color:var(--mute);max-width:58ch;font-size:18px;margin-top:16px}
+.credit{font-size:14px;color:var(--mute);margin-top:22px}
+.credit a,.tl{color:var(--acc);font-weight:600;text-underline-offset:4px}
+.tl{background:none;border:0;padding:12px 0;font:600 16px var(--sans);cursor:pointer;text-decoration:underline;min-height:44px;display:inline-flex;align-items:center}
+.tl[hidden]{display:none}
+
+/* demo bar */
+.demo-bar{background:var(--dark);color:#dcdcda;font-size:13px;padding:9px var(--gut);line-height:1.4;text-align:left}
+.demo-bar a{color:#fff;display:inline-block;padding:6px 2px}
+.demo-bar.foot{margin-top:56px;padding-left:0;padding-right:0;background:none;color:var(--mute);border-top:1px solid var(--line)}
+.demo-bar.foot a{color:var(--ink)}
 
 /* header */
-header.top{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-.hrow{display:flex;align-items:center;gap:14px;min-height:68px}
-.logo{display:flex;align-items:center;flex:0 0 auto}
-.logo img{height:22px;width:auto}
-nav.main{display:flex;gap:22px;margin-left:26px}
-nav.main a{color:var(--ink);text-decoration:none;font-size:15px;padding:8px 0;border-bottom:2px solid transparent}
-nav.main a:hover{border-color:var(--brass)}
-.hright{margin-left:auto;display:flex;align-items:center;gap:10px}
-.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.lang button{border:0;background:transparent;font:600 13px var(--sans);padding:9px 12px;cursor:pointer;color:var(--ink);min-height:40px}
-.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--ink);background:var(--ink);color:#fff;font:600 16px var(--sans);padding:13px 22px;border-radius:999px;cursor:pointer;text-decoration:none;min-height:48px;transition:transform .2s,background .2s,box-shadow .2s}
-.btn:hover{background:#000;transform:translateY(-1px)}
-.btn.brass{background:var(--brass);border-color:var(--brass);color:#15181b}
-.btn.brass:hover{background:#c29d63;border-color:#c29d63}
-.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
-.btn.ghost:hover{background:rgba(255,255,255,.14)}
-.btn.line{background:transparent;color:var(--ink)}
-.btn.line:hover{background:var(--ink);color:#fff}
-.btn.sm{min-height:42px;padding:9px 16px;font-size:15px}
+header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:20px;min-height:var(--hh);padding:0 var(--gut);max-width:var(--max);margin:0 auto}
+.logo{flex:0 0 auto;display:flex}
+.logo img{height:25px;width:auto}
+nav.main{display:flex;gap:6px;margin-left:clamp(20px,4vw,64px)}
+nav.main a{text-decoration:none;font-size:15px;font-weight:600;padding:12px 12px;color:var(--ink);border-bottom:3px solid transparent;transition:border-color .2s}
+nav.main a:hover{border-bottom-color:var(--acc)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:20px}
+.phone{font-weight:700;font-size:16px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.lang{display:flex}
+.lang button{border:1px solid var(--line);background:#fff;color:var(--ink);font:600 13px var(--sans);padding:8px 11px;min-height:44px;cursor:pointer;border-radius:2px}
+.lang button+button{margin-left:-1px}
+.lang button[aria-pressed="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:700 16px var(--sans);padding:13px 26px;cursor:pointer;text-decoration:none;min-height:52px;border-radius:2px;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:var(--acc2);border-color:var(--acc2)}
+.btn.ghw{border-color:#fff;color:#fff}
+.btn.ghw:hover{background:#fff;color:var(--ink)}
+.btn.sm{min-height:46px;padding:9px 20px;font-size:15px}
+.navlang{display:none}
 .cwrap{position:relative}
-.cmenu{position:absolute;right:0;top:calc(100% + 8px);width:290px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(20,20,20,.18);padding:8px;display:none;z-index:60}
+.cmenu{position:absolute;right:0;top:calc(100% + 10px);width:320px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--acc);padding:6px;display:none;z-index:60;box-shadow:0 14px 30px -14px rgba(35,35,36,.35)}
 .cmenu.open{display:block}
-.cmenu a{display:flex;flex-direction:column;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--ink);min-height:48px;justify-content:center}
-.cmenu a:hover,.cmenu a:focus-visible{background:var(--cream)}
-.cmenu small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
-.cmenu b{font-weight:600;font-size:15px}
-.cmenu hr{border:0;border-top:1px solid var(--line);margin:6px 8px}
-.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:var(--paper);border-radius:10px;cursor:pointer;padding:0}
-.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:5px auto;transition:transform .2s,opacity .2s}
+.cmenu a{display:flex;flex-direction:column;padding:11px 14px;text-decoration:none;color:var(--ink);min-height:52px;justify-content:center}
+.cmenu a:hover,.cmenu a:focus-visible{background:var(--soft)}
+.cmenu small{color:var(--mute);font-size:13px;overflow-wrap:anywhere}
+.cmenu b{font-weight:700;font-size:15px}
+.cmenu hr{border:0;border-top:1px solid var(--line);margin:6px 14px}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);background:#fff;cursor:pointer;padding:0;border-radius:2px}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px auto;transition:transform .25s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* hero */
-.hero{position:relative;color:#fff;background:#222 url(assets/poster.webp) center/cover no-repeat;min-height:clamp(500px,calc(100vh - 108px),720px);display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;height:calc(100svh - var(--hh) - var(--db));min-height:540px;max-height:880px;padding:0;color:#fff;background:#2a2a2a url(assets/poster.webp) center/cover no-repeat;overflow:hidden;display:flex;align-items:flex-end}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,14,.45) 0%,rgba(10,12,14,.5) 35%,rgba(10,12,14,.78) 100%)}
-.hero .wrap{position:relative;z-index:2;padding-top:44px;padding-bottom:84px;width:100%}
-.eyebrow{font:600 13px var(--sans);letter-spacing:2px;text-transform:uppercase;color:#e9cf9d;margin-bottom:14px}
-.hero h1{font-size:clamp(34px,4.4vw,58px);max-width:860px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
-.hero p.sub{font-size:clamp(17px,2vw,20px);max-width:640px;margin:18px 0 26px;color:#f3efe7}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
-.vctl{position:absolute;z-index:3;right:var(--gut);bottom:18px;display:flex;align-items:center;gap:10px;font-size:13px;color:#f0ebe0}
-.vctl button{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8);background:rgba(10,12,14,.5);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
-.vctl svg{width:18px;height:18px;fill:#fff}
-.vcap{background:rgba(10,12,14,.55);padding:6px 10px;border-radius:6px}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,20,.78) 0%,rgba(20,20,20,.4) 38%,rgba(20,20,20,.05) 70%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut) clamp(34px,5vw,64px)}
+.hero h1{font-size:clamp(36px,5.6vw,80px);font-weight:500;line-height:1.05;max-width:15em;text-wrap:balance;letter-spacing:-.02em}
+.hero .sub{font-size:clamp(16px,1.5vw,20px);color:#f0efec;margin:20px 0 28px;max-width:52ch}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.vctl{position:absolute;right:var(--gut);bottom:clamp(34px,5vw,64px);display:flex;align-items:center;gap:12px;font-size:13px;color:#e8e7e3}
+.vctl button{width:44px;height:44px;border:2px solid rgba(255,255,255,.85);background:rgba(20,20,20,.4);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;border-radius:2px}
+.vctl button:hover{background:rgba(255,255,255,.2)}
+.vctl svg{width:16px;height:16px;fill:#fff}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero .sub,.hero .ctas{opacity:0;transform:translateY(20px);animation:up .9s var(--ease) forwards}
+  .hero h1{animation-delay:.1s}.hero .sub{animation-delay:.3s}.hero .ctas{animation-delay:.45s}
+}
+@keyframes up{to{opacity:1;transform:none}}
 
-/* generic sections */
-section{padding:84px 0}
-section.alt{background:var(--paper)}
-section.dark{background:var(--ink);color:#f3efe7}
-section.dark h2,section.dark h3{color:#fff}
-.kick{font:600 13px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--brass-d);margin-bottom:10px}
-.dark .kick{color:#e0c48f}
-.lead{color:var(--muted);max-width:680px;font-size:18px;margin-top:14px}
-.dark .lead{color:#cfc9bb}
-.head{margin-bottom:40px}
+/* intro */
+.intro{background:var(--soft);padding:clamp(48px,6vw,84px) 0}
+.igrid{display:grid;grid-template-columns:5fr 7fr;gap:40px clamp(40px,6vw,100px);align-items:center}
+.intro h2{font-size:clamp(30px,3.4vw,46px)}
+.facts{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.f{margin:0;padding:22px 24px;border-left:1px solid var(--line)}
+.f:nth-child(odd){border-left:0;padding-left:0}
+.f:nth-child(n+3){border-top:1px solid var(--line)}
+.f dd{margin:0 0 4px;font:500 clamp(30px,3.2vw,44px)/1.05 var(--serif);color:var(--acc);letter-spacing:-.02em}
+.f dt{font-size:14px;color:var(--mute);line-height:1.4;order:2;max-width:30ch}
+.f{display:flex;flex-direction:column}
+.f dd{order:1}
 
-/* facts */
-.facts{background:var(--ink);color:#fff;padding:0}
-.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
-.fact{padding:30px 22px;border-left:1px solid rgba(255,255,255,.14)}
-.fact:first-child{border-left:0}
-.fact b{display:block;font:500 clamp(24px,3vw,34px) var(--serif);color:#e9cf9d}
-.fact span{font-size:14px;color:#d6d0c2}
-
-/* services */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(40,30,10,.1)}
-.card h3{margin-bottom:10px}
-.card p{color:var(--muted);font-size:16px}
-.card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
-.tag{display:inline-block;font:600 12px var(--sans);letter-spacing:1px;text-transform:uppercase;color:var(--brass-d);margin-bottom:12px}
+/* homes / remodel */
+.hgrid{display:grid;grid-template-columns:6fr 5fr;gap:50px clamp(40px,6vw,100px);align-items:center}
+.hgrid.rev{grid-template-columns:5fr 6fr}
+.hfig{margin:0;aspect-ratio:4/5;overflow:hidden;background:#ddd}
+.hfig img{width:100%;height:100%;object-fit:cover}
+.homes .hfig{order:2}
+.htext h2{margin-bottom:26px}
+.srv{padding:20px 0;border-top:1px solid var(--line)}
+.srv h3{font-size:22px;margin-bottom:6px}
+.srv p{color:var(--mute);margin:0;max-width:46ch}
+.hoods-h{font:700 14px var(--sans);letter-spacing:0;margin:34px 0 12px;border-top:3px solid var(--acc);padding-top:16px}
+.hoods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.hoods li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hoods b{font-weight:600}
+.hoods span{color:var(--mute)}
+.note-s{color:var(--mute);margin:18px 0 0;font-size:15px}
+.remod{background:var(--soft)}
+.remod .hfig{aspect-ratio:1/1}
 
 /* gallery */
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
-.chip{border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;font:600 14px var(--sans);cursor:pointer;min-height:42px}
-.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
-.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.gi{border:0;padding:0;background:#ddd;border-radius:8px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;position:relative}
-.gi img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.gi:hover img{transform:scale(1.05)}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;margin-bottom:34px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink);font:600 14px var(--sans);cursor:pointer;padding:9px 16px;min-height:44px;border-radius:2px}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(22px,2.6vw,36px) clamp(14px,1.8vw,24px)}
+.gi{border:0;padding:0;background:none;text-align:left;cursor:pointer;color:inherit;font:inherit;display:block;grid-column:span 6}
 .gi[hidden]{display:none}
-.credit{font-size:13px;color:var(--muted);margin-top:14px}
-dialog#lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
-dialog#lb::backdrop{background:rgba(8,9,10,.92)}
-.lbin{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 12px 20px}
-.lbin img{max-width:min(1200px,96vw);max-height:calc(100vh - 150px);width:auto;height:auto;object-fit:contain;border-radius:6px}
-.lbcap{margin-top:12px;font-size:15px;text-align:center;max-width:720px}
-.lbbtn{position:absolute;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);background:rgba(20,20,20,.6);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
-.lbbtn.close{top:12px;right:12px}
-.lbbtn.prev{left:12px;top:50%;transform:translateY(-50%)}
-.lbbtn.next{right:12px;top:50%;transform:translateY(-50%)}
+.gi .ph{display:block;overflow:hidden;background:#ddd}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gi:hover img{transform:scale(1.03)}
+.gi .cap{display:block;font-size:14px;color:var(--mute);margin-top:10px;line-height:1.4;max-width:52ch}
+@media (min-width:861px){
+  .gi.p0{grid-column:span 6}.gi.p0 .ph{aspect-ratio:2.1/1}
+  .gi.p1,.gi.p2,.gi.p3{grid-column:span 2}.gi.p1 .ph,.gi.p2 .ph,.gi.p3 .ph{aspect-ratio:4/5}
+  .gi.p4,.gi.p5{grid-column:span 3}.gi.p4 .ph,.gi.p5 .ph{aspect-ratio:3/2}
+}
+@media (max-width:860px){.gi .ph{aspect-ratio:3/2}.gi.p1,.gi.p2,.gi.p3{grid-column:span 3}.gi.p1 .ph,.gi.p2 .ph,.gi.p3 .ph{aspect-ratio:1/1}.gi.p3{grid-column:span 6}.gi.p3 .ph{aspect-ratio:3/2}.gi .cap{font-size:13px}}
+.more{margin-top:40px}
+.more .btn{min-width:220px}
 
 /* tools */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.tab{border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:999px;padding:11px 20px;font:600 15px var(--sans);cursor:pointer;min-height:46px}
-.tab[aria-selected="true"]{background:#e9cf9d;border-color:#e9cf9d;color:#15181b}
-.panel{background:var(--ink2);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.tools{background:var(--soft)}
+.head{margin-bottom:38px;max-width:760px}
+.tabs{display:flex;gap:0;flex-wrap:wrap;margin-bottom:0;border-bottom:3px solid var(--dark)}
+.tab{border:1px solid var(--line);border-bottom:0;background:#fff;color:var(--ink);padding:14px 22px;font:700 16px var(--sans);cursor:pointer;min-height:50px;border-radius:2px 2px 0 0;margin-right:4px}
+.tab:hover{background:#fafaf8}
+.tab[aria-selected="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);padding:clamp(24px,3vw,44px);background:#fff;border:1px solid var(--line);border-top:0}
 .panel[hidden]{display:none}
-.field{margin-bottom:18px}
-.field label{display:block;font-size:14px;color:#d8d2c4;margin-bottom:6px}
-.field input[type=number],.field select{width:100%;font:16px var(--sans);padding:12px 14px;border-radius:8px;border:1px solid #55606a;background:#15181b;color:#fff;min-height:48px}
-.field input[type=range]{width:100%;accent-color:#e9cf9d;min-height:32px}
-.field .row{display:flex;gap:10px;align-items:center}
-.out{background:#15181b;border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,.1);align-self:start}
-.out .big{font:500 clamp(28px,4vw,40px) var(--serif);color:#e9cf9d;line-height:1.1;overflow-wrap:anywhere}
-.out .lbl{font-size:13px;color:#cfc9bb;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.out .mini{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid rgba(255,255,255,.1);font-size:15px}
-.out .mini span:last-child{font-weight:600;text-align:right}
-.bar{height:10px;border-radius:6px;background:#3a424a;overflow:hidden;margin:6px 0 14px}
-.bar i{display:block;height:100%;background:#e9cf9d;transition:width .3s}
-.note{font-size:13px;color:#c2bcad;margin:14px 0}
-.src{font-size:13px;color:#c2bcad}
-.src a{color:#e9cf9d}
+.panel h3{font-size:clamp(22px,2.2vw,30px);margin-bottom:10px}
+.note{font-size:14px;color:var(--mute);margin:14px 0}
+.src{font-size:13px;color:var(--mute);line-height:1.5}
+.src a{color:var(--acc)}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.field input[type=number],.field select,.field input[type=text],.field input[type=tel],.field input[type=email],.field textarea{width:100%;font:17px var(--sans);padding:11px 13px;border:1px solid #8b8b88;background:#fff;color:var(--ink);min-height:48px;border-radius:2px}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:3px solid var(--acc);outline-offset:1px}
+.field input[type=range]{width:100%;accent-color:var(--acc);min-height:32px}
+.field .row{display:flex;gap:18px;align-items:center}
+.out{align-self:start;background:var(--soft);padding:clamp(22px,2.6vw,36px);border-top:4px solid var(--acc)}
+.out .lbl{font-size:14px;color:var(--mute);margin-bottom:8px}
+.out .big{font:500 clamp(34px,4vw,54px)/1.05 var(--serif);letter-spacing:-.02em;overflow-wrap:anywhere;margin-bottom:22px;color:var(--acc)}
+.out .mini{display:flex;justify-content:space-between;gap:16px;padding:10px 0;font-size:16px;color:var(--mute);border-top:1px solid var(--line)}
+.out .mini span:last-child{color:var(--ink);text-align:right;font-weight:700}
+.bar{height:6px;background:#d9d8d4;margin:0 0 22px}
+.bar i{display:block;height:100%;background:var(--acc);transition:width .5s var(--ease)}
+.out .btn{margin-top:18px}
 
 /* process */
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
-.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;position:relative;transition:transform .25s,box-shadow .25s}
-.step:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(40,30,10,.1)}
-.step:before{counter-increment:s;content:counter(s);font:500 36px var(--serif);color:var(--brass-d);display:block;margin-bottom:8px}
-.step h3{font-size:20px;margin-bottom:8px}
-.step p{font-size:15px;color:var(--muted);margin:0}
+.pgrid{display:grid;grid-template-columns:5fr 6fr;gap:50px clamp(40px,6vw,100px);align-items:start}
+.pfig{margin:0;aspect-ratio:4/5;overflow:hidden;background:#ddd;position:sticky;top:110px}
+.pfig img{width:100%;height:100%;object-fit:cover}
+.steps{list-style:none;margin:34px 0 0;padding:0;counter-reset:s}
+.step{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:0 18px;padding:22px 0;border-top:1px solid var(--line)}
+.step:before{content:counter(s);grid-row:span 2;font:500 38px/1 var(--serif);color:var(--acc)}
+.step h3{font-size:24px;margin-bottom:4px}
+.step p{margin:0;color:var(--mute);max-width:46ch}
 
 /* awards */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.list{list-style:none;margin:0;padding:0}
-.list li{padding:12px 0;border-bottom:1px solid var(--line)}
-.list li:first-child{border-top:1px solid var(--line)}
-.list b{font-family:var(--serif);font-weight:500;font-size:19px}
-.list small{display:block;color:var(--muted)}
+.awards{background:var(--dark);color:#f2f2f0}
+.awards .lead,.awards small{color:#b7b7b3}
+.agrid{display:grid;grid-template-columns:7fr 5fr;gap:50px clamp(40px,7vw,120px)}
+.awards h2{color:#fff}
+ul.big,ul.plain{list-style:none;margin:30px 0 0;padding:0}
+ul.big li{padding:20px 0;border-top:1px solid #4a4a4b}
+ul.big b{display:block;font:500 clamp(24px,2.6vw,34px)/1.15 var(--serif)}
+ul.big small,ul.plain small{display:block;font-size:15px;margin-top:4px}
+ul.plain li{padding:14px 0;border-top:1px solid #4a4a4b}
+ul.plain b{font-weight:700;font-size:18px}
+ul.plain .mags{color:#b7b7b3;font-size:15px}
+.press h2{font-size:clamp(26px,2.6vw,34px)}
 
 /* area */
-.mapbox{background:#e6e0d3;border-radius:var(--r);min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid var(--line);overflow:hidden}
-.mapbox iframe{width:100%;height:380px;border:0;display:block}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
-.pills span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:15px}
+.agrid2{display:grid;grid-template-columns:5fr 7fr;gap:44px clamp(30px,5vw,80px);align-items:start}
+.towns{font:500 clamp(24px,2.6vw,34px)/1.25 var(--serif);margin:24px 0}
+address{font-style:normal;color:var(--mute);margin:0 0 8px}
+.mapbox{background:var(--soft);min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid var(--line);overflow:hidden}
+.mapbox p{color:var(--mute)}
+.mapbox iframe{width:100%;height:400px;border:0;display:block}
 
 /* license */
-.lic{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
-.kv{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:18px 0}
-.kv dt{color:var(--muted);font-size:15px}
-.kv dd{margin:0;font-weight:600;overflow-wrap:anywhere}
-.badge{display:inline-block;background:#e3f1e8;color:#1e5236;font:700 13px var(--sans);padding:4px 10px;border-radius:999px;letter-spacing:.5px}
+.lic{background:var(--soft)}
+.lgrid{display:grid;grid-template-columns:7fr 5fr;gap:50px clamp(40px,7vw,120px)}
+.lic h2{font-size:clamp(28px,3vw,42px)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:0;margin:26px 0;background:#fff;border:1px solid var(--line)}
+.kv dt,.kv dd{padding:12px 16px;border-bottom:1px solid var(--line);margin:0}
+.kv dt{color:var(--mute);font-size:15px}
+.kv dd{font-weight:600;overflow-wrap:anywhere}
+.kv dt:nth-last-of-type(1),.kv dd:last-of-type{border-bottom:0}
+.badge{display:inline-block;background:var(--acc);color:#fff;font:700 12px var(--sans);padding:3px 9px;letter-spacing:.04em;margin-left:8px;vertical-align:2px;border-radius:2px}
+.wty{background:#fff;border:1px solid var(--line);border-top:4px solid var(--acc);padding:clamp(22px,2.6vw,34px);align-self:start}
+.wty h3{font-size:clamp(22px,2vw,28px);margin-bottom:14px}
+.wty ul{margin:0 0 16px;padding-left:20px;line-height:1.7}
 
 /* faq */
-details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px}
-summary{cursor:pointer;padding:18px 22px;font:500 20px var(--serif);list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:56px;align-items:center}
+.fwrap{max-width:900px}
+.fwrap h2{margin-bottom:30px}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:3px solid var(--dark)}
+summary{cursor:pointer;padding:20px 0;font:600 clamp(18px,1.7vw,21px) var(--sans);list-style:none;display:flex;justify-content:space-between;gap:20px;min-height:60px;align-items:center}
 summary::-webkit-details-marker{display:none}
-summary:after{content:"+";font:300 28px var(--sans);color:var(--brass-d);flex:none}
-details[open] summary:after{content:"\2212"}
-details p{padding:0 22px 18px;margin:0;color:var(--muted)}
+summary:after{content:"+";font:500 28px var(--sans);flex:none;color:var(--acc);transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0;padding:0 0 22px;color:var(--mute);max-width:64ch}
 
 /* contact */
-.cgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px}
-.cl{list-style:none;padding:0;margin:20px 0}
-.cl li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column}
-.cl small{color:var(--muted);font-size:13px;letter-spacing:.5px;text-transform:uppercase}
-.cl a,.cl span{font-size:18px;overflow-wrap:anywhere}
-.cl a{display:inline-block;padding:8px 0}
-.demo-bar a{display:inline-block;padding:10px 4px}
-form.est{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-form .field label{color:var(--ink)}
-form .field input,form .field select,form .field textarea{width:100%;font:16px var(--sans);padding:12px 14px;border-radius:8px;border:1px solid #b9b19f;background:#fff;color:var(--ink);min-height:48px}
-form .field textarea{min-height:100px;resize:vertical}
-.demo-note{background:#f0e6d0;border:1px solid #dccca8;color:#3a2f16;padding:12px 14px;border-radius:8px;font-size:15px;margin-bottom:16px}
-.sent{display:none;margin-top:16px;background:#f0e6d0;border:1px solid #dccca8;color:#3a2f16;padding:14px;border-radius:8px}
+.est-s{background:var(--soft)}
+.cgrid{display:grid;grid-template-columns:5fr 6fr;gap:50px clamp(40px,6vw,100px);align-items:start}
+.cl{list-style:none;padding:0;margin:26px 0 0}
+.cl li{padding:12px 0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.cl small{color:var(--mute);font-size:14px}
+.cl a,.cl span{font-size:19px;font-weight:600;overflow-wrap:anywhere}
+.cl a{display:inline-block;padding:4px 0;text-underline-offset:4px}
+.soc{display:flex;gap:24px;flex-wrap:wrap}
+.cgrid form{background:#fff;padding:clamp(22px,3vw,40px);border:1px solid var(--line);border-top:4px solid var(--acc)}
+.demo-note{background:var(--soft);border-left:4px solid var(--acc);padding:13px 16px;font-size:15px;margin-bottom:26px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+form .field textarea{min-height:110px;resize:vertical}
+.sent{display:none;margin-top:20px;border:1px solid var(--acc);padding:16px}
 .sent.show{display:block}
+form .btn{width:100%;margin-top:6px;min-height:56px}
 
-footer{background:var(--ink);color:#cfc9bb;padding:48px 0 30px;font-size:15px}
-footer a{color:#e9cf9d}
-footer .fg{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
-footer img{height:22px;margin-bottom:14px}
+footer{background:var(--dark);color:#c9c9c6;padding:clamp(48px,6vw,80px) 0 0;font-size:15px}
+footer .fg{display:grid;grid-template-columns:5fr 3fr 4fr;gap:36px var(--gut)}
+footer img{height:25px;width:auto;margin-bottom:18px}
+footer b{color:#fff;display:block;margin-bottom:10px}
+footer a{color:#fff}
+footer .demo-bar{max-width:var(--max);margin-left:auto;margin-right:auto;padding-left:var(--gut);padding-right:var(--gut);border-top:1px solid #4a4a4b;color:#b7b7b3}
+footer .demo-bar a{color:#fff}
+
+/* lightbox */
+dialog#lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+dialog#lb::backdrop{background:rgba(20,20,20,.95)}
+.lbin{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 12px 20px}
+.lbin img{max-width:min(1280px,96vw);max-height:calc(100vh - 150px);width:auto;height:auto;object-fit:contain}
+.lbcap{margin-top:14px;font-size:15px;text-align:center;max-width:720px;color:#e0e0dd}
+.lbbtn{position:absolute;width:48px;height:48px;border:2px solid rgba(255,255,255,.8);background:rgba(20,20,20,.7);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;border-radius:2px}
+.lbbtn.close{top:14px;right:14px}.lbbtn.prev{left:14px;top:50%;transform:translateY(-50%)}.lbbtn.next{right:14px;top:50%;transform:translateY(-50%)}
 
 .bbar{display:none}
 
-/* reveal */
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+/* motion */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .hfig img{animation:par linear both;animation-timeline:view();transform-origin:center}
+    @keyframes par{from{transform:scale(1.1) translateY(-3%)}to{transform:scale(1.1) translateY(3%)}}
+  }
+}
 
 @media (max-width:1100px){
+  .phone{display:none}
   nav.main{display:none}
   .burger{display:block}
-  nav.main.open{display:flex;position:absolute;left:0;right:0;top:100%;background:var(--paper);flex-direction:column;gap:0;margin:0;padding:8px var(--gut) 14px;border-bottom:1px solid var(--line);box-shadow:0 14px 24px rgba(0,0,0,.08)}
-  nav.main.open a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
-  .grid3{grid-template-columns:1fr 1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .gal{grid-template-columns:repeat(3,1fr)}
+  nav.main.open{display:flex;position:absolute;left:0;right:0;top:100%;height:calc(100svh - var(--hh));background:#fff;flex-direction:column;gap:0;margin:0;padding:8px var(--gut) 90px;overflow:auto;border-top:1px solid var(--line)}
+  nav.main.open a{padding:18px 0;font:500 26px var(--serif);border-bottom:1px solid var(--line)}
+  header.top{--hh:72px}
 }
 @media (max-width:860px){
-  .facts .wrap{grid-template-columns:1fr 1fr}
-  .fact:nth-child(3){border-left:0}
-  .fact{border-top:1px solid rgba(255,255,255,.14)}
-  .fact:nth-child(-n+2){border-top:0}
-  .panel,.two,.lic,.cgrid,footer .fg{grid-template-columns:1fr}
-  .panel{padding:22px 18px;gap:24px}
-  .gal{grid-template-columns:repeat(2,1fr)}
+  .igrid,.hgrid,.hgrid.rev,.pgrid,.agrid,.agrid2,.lgrid,.cgrid,.panel,footer .fg{grid-template-columns:1fr}
+  .homes .hfig{order:0}
+  .hfig,.remod .hfig{aspect-ratio:4/3}
+  .pfig{position:static;aspect-ratio:4/3}
+  .frow{grid-template-columns:1fr}
 }
 @media (max-width:760px){
-  body{padding-bottom:68px;font-size:16px}
-  section{padding:60px 0}
-  .grid3,.steps,.frow{grid-template-columns:1fr}
-  .hero .wrap{padding-bottom:86px;padding-top:28px}
-  .hero h1{font-size:clamp(30px,8.4vw,40px)}
-  .hero .btn.ghost{display:none}
-  .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+  body{padding-bottom:72px;font-size:16px}
+  .hero{min-height:500px}
+  .vctl{position:static;margin-top:22px}
+  .hero .btn.ghw{display:none}
+  .hero-in{padding-bottom:92px}
+  .logo img{height:20px}
+  .hrow{gap:8px}
+  .hright{gap:6px}
+  .lang button{padding:8px 9px}
+  .btn.sm{padding:9px 14px}
+  .bbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
+  .bbar a{display:flex;align-items:center;justify-content:center;min-height:50px;color:var(--ink);text-decoration:none;font:700 16px var(--sans);border:2px solid var(--ink);border-radius:2px}
+  .bbar a.est{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .cwrap{position:static}.cmenu{position:absolute;left:12px;right:12px;width:auto;top:calc(100% + 4px);max-height:calc(100svh - var(--hh) - 90px);overflow:auto}
+  .chips{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:4px}
   .chip{flex:none}
   .tabs{flex-wrap:nowrap;overflow-x:auto}
-  .tab{flex:none}
-  .hero p.sub{margin:12px 0 18px;font-size:16px}
-  .vctl{bottom:10px;left:var(--gut);right:auto;flex-direction:row-reverse}
-  .bbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--ink);border-top:1px solid #000;padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
-  .bbar a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:10px;color:#fff;text-decoration:none;font:600 15px var(--sans);background:#2a3138}
-  .bbar a.est{background:var(--brass);color:#15181b}
-  .hright{gap:6px}
-  .lang button{padding:9px 9px}
-  .logo img{height:18px}
-  .hrow{gap:8px}
-  .cmenu{position:fixed;left:12px;right:12px;width:auto;top:112px}
+  .tab{flex:none;padding:12px 16px}
+  .facts{grid-template-columns:1fr 1fr}
+  .hoods{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  .kv dt{border-bottom:0;padding-bottom:0}
 }
-@media (max-width:400px){
-  :root{--gut:16px}
-  .btn.sm{padding:9px 12px;font-size:14px}
-  .logo img{height:16px}
-  .lang button[aria-pressed="true"]{display:none}
-  .lang button{padding:9px 12px}
-  .burger{width:42px;height:42px}
-  .hright{gap:5px}
+@media (max-width:480px){
+  .hright .lang{display:none}
+  nav.main.open .navlang{display:flex;margin-top:22px}
+}
+@media (max-width:420px){
+  .logo img{height:17px}
+  .btn.sm{font-size:14px;padding:9px 11px}
+  .lang button{font-size:12px;padding:8px 7px}
+  .hero h1{font-size:34px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
   .js .rv{opacity:1;transform:none}
-  .card:hover,.step:hover,.btn:hover{transform:none}
-  .gi:hover img{transform:none}
 }
+
 </style>
 </head>
 <body>
 <a class="skip" href="#main" data-i="skip">Skip to content</a>
 
-<div class="demo-bar" role="note"><span data-i="demo">Demo concept, not the official website of Kootenia Homes.</span> <a href="https://kooteniahomes.com/" rel="noopener noreferrer" data-i="demoLink">Official site: kooteniahomes.com</a></div>
+<div class="demo-bar" id="demobar" role="note"><span data-i="demo">Demo concept, not the official website of Kootenia Homes.</span> <a href="https://kooteniahomes.com/" rel="noopener noreferrer" data-i="demoLink">Official site: kooteniahomes.com</a></div>
 
-<header class="top">
-  <div class="wrap hrow">
-    <a class="logo" href="#top" aria-label="Kootenia Homes"><img src="assets/logo-dark.webp" alt="Kootenia" width="170" height="22"></a>
+<header class="top" id="top-h">
+  <div class="hrow">
+    <a class="logo" href="#top" aria-label="Kootenia Homes"><img src="assets/logo-dark.webp" alt="Kootenia" width="337" height="39"></a>
     <nav class="main" id="nav" aria-label="Main">
-      <a href="#services" data-i="nServices">Services</a>
-      <a href="#gallery" data-i="nProjects">Projects</a>
+      <a href="#services" data-i="nCH">Custom Homes</a>
+      <a href="#remodeling" data-i="nRM">Remodeling</a>
+      <a href="#gallery" data-i="nOH">Our Homes</a>
       <a href="#tools" data-i="nTools">Cost tools</a>
-      <a href="#process" data-i="nProcess">Process</a>
-      <a href="#faq" data-i="nFaq">FAQ</a>
+      <a href="#process" data-i="nAbout">About</a>
+      <div class="lang navlang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
     </nav>
     <div class="hright">
+      <a class="phone" href="tel:+16517312345">(651) 731-2345</a>
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button>
       </div>
       <div class="cwrap">
-        <button type="button" class="btn brass sm" id="cbtn" aria-expanded="false" aria-controls="cmenu" data-i="contact">Contact</button>
+        <button type="button" class="btn pri sm" id="cbtn" aria-expanded="false" aria-controls="cmenu" data-i="contact">Contact</button>
+        <div class="cmenu" id="cmenu" role="group" aria-label="Contact options">
         <div class="cmenu" id="cmenu" role="group" aria-label="Contact options">
           <a href="tel:+16517312345"><b data-i="mCall">Call</b><small>(651) 731-2345</small></a>
           <a href="sms:+16517312345"><b data-i="mText">Text</b><small>(651) 731-2345</small></a>
@@ -310,6 +381,7 @@ footer img{height:22px;margin-bottom:14px}
           <a href="https://www.houzz.com/pro/michaelleehomes/" target="_blank" rel="noopener noreferrer"><b>Houzz</b><small>michaelleehomes</small></a>
           <hr>
           <a href="#estimate" data-close="1"><b data-i="mEst">Request an estimate</b><small data-i="mEstSub">Use the form below</small></a>
+        </div>
         </div>
       </div>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" data-ia="aria-label:menu"><span></span><span></span><span></span></button>
@@ -323,61 +395,88 @@ footer img{height:22px;margin-bottom:14px}
   <video id="hv" muted loop playsinline preload="metadata" poster="assets/poster.webp" aria-hidden="true" tabindex="-1">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
-  <div class="wrap">
-    <div class="eyebrow" data-i="eyebrow">Custom homes and remodeling since 1969</div>
+  <div class="hero-in">
     <h1 id="h1" data-i="h1">Custom homes and remodeling in Woodbury and the east Twin Cities</h1>
-    <p class="sub" data-i="sub">Family-owned builder serving Afton, Grant, Lake Elmo, North Oaks, Stillwater and Woodbury, Minnesota.</p>
+    <p class="sub" data-i="sub">Building in Afton, Grant, Lake Elmo, North Oaks, Stillwater and Woodbury since 1969.</p>
     <div class="ctas">
-      <a class="btn brass" href="#estimate" data-i="ctaEst">Get a free estimate</a>
-      <a class="btn ghost" href="tel:+16517312345"><span data-i="ctaCall">Call</span>&nbsp;(651) 731-2345</a>
+      <a class="btn pri" href="#estimate" data-i="ctaEst">Free estimate</a>
+      <a class="btn ghw" href="tel:+16517312345"><span data-i="ctaCall">Call</span>&nbsp;(651) 731-2345</a>
     </div>
-  </div>
-  <div class="vctl">
-    <button type="button" id="vbtn" aria-pressed="false" data-ia="aria-label:pause"><svg id="vicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
-    <span class="vcap" data-i="stock">Stock footage, not company projects</span>
+    <div class="vctl">
+      <button type="button" id="vbtn" aria-pressed="false" data-ia="aria-label:pause"><svg id="vicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+      <span class="vcap" data-i="stock">Stock footage, not company projects</span>
+    </div>
   </div>
 </section>
 
-<!-- FACTS -->
-<section class="facts" aria-label="Key facts">
-  <div class="wrap">
-    <div class="fact"><b>1969</b><span data-i="f1">Founded, family-owned (per kooteniahomes.com)</span></div>
-    <div class="fact"><b>BC686614</b><span data-i="f2">MN residential building contractor license, active</span></div>
-    <div class="fact"><b data-i="f3b">1 / 2 / 10 yr</b><span data-i="f3">Year craftsmanship, mechanical and structural warranty</span></div>
-    <div class="fact"><b data-i="f4b">East Metro</b><span data-i="f4">Woodbury office, Twin Cities service area</span></div>
+<!-- INTRO -->
+<section class="intro" aria-labelledby="in-h">
+  <div class="wrap igrid">
+    <div class="rv">
+      <h2 id="in-h" data-i="inH">Family-owned since 1969</h2>
+      <p class="lead" data-i="inP">Kootenia Homes designs and builds custom homes and remodels existing ones from its Woodbury office, with a 1, 2 and 10-year warranty.</p>
+    </div>
+    <dl class="facts rv">
+      <div class="f"><dt data-i="f1">Founded, family-owned</dt><dd>1969</dd></div>
+      <div class="f"><dt data-i="f2">MN residential building contractor license</dt><dd>BC686614</dd></div>
+      <div class="f"><dt data-i="f3">Year craftsmanship, mechanical and structural warranty</dt><dd data-i="f3b">1 / 2 / 10 yr</dd></div>
+      <div class="f"><dt data-i="f4">Woodbury office, Twin Cities service area</dt><dd data-i="f4b">East Metro</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" aria-labelledby="sv-h">
-  <div class="wrap">
-    <div class="head rv"><div class="kick" data-i="svK">What we do</div><h2 id="sv-h" data-i="svH">Build, rebuild or renovate</h2><p class="lead" data-i="svL">Every service below is listed on kooteniahomes.com. Ask us for scope and pricing on your project.</p></div>
-    <div class="grid3">
-      <article class="card rv"><span class="tag" data-i="s1t">New homes</span><h3 data-i="s1h">Build in a neighborhood</h3><p data-i="s1p">Choose a homesite in one of the communities we build in.</p><ul><li>Cherry Meadow, Woodbury</li><li>Elliott Crossing, Grant</li><li>Old Wildwood Oaks, Mahtomedi</li><li>Hartung Farm, Woodbury</li><li>The Gateway, Grant</li><li>Aster Landing, Woodbury</li></ul></article>
-      <article class="card rv"><span class="tag" data-i="s2t">New homes</span><h3 data-i="s2h">Build on your lot</h3><p data-i="s2p">Already own land in the Twin Cities? We design and build the home around your site.</p></article>
-      <article class="card rv"><span class="tag" data-i="s3t">New homes</span><h3 data-i="s3h">Tear-down and rebuild</h3><p data-i="s3p">Keep the location you love and replace the house with a new custom home.</p></article>
-      <article class="card rv"><span class="tag" data-i="s4t">Renovation</span><h3 data-i="s4h">Kitchens and owner's suites</h3><p data-i="s4p">Kitchen remodels and owner's suite and bath renovations.</p></article>
-      <article class="card rv"><span class="tag" data-i="s5t">Renovation</span><h3 data-i="s5h">Lower levels, additions, home offices</h3><p data-i="s5p">Finish a lower level, add space, or create a dedicated home office.</p></article>
-      <article class="card rv"><span class="tag" data-i="s6t">Renovation</span><h3 data-i="s6h">Outdoor living and pools</h3><p data-i="s6p">Patios, covered porches, outdoor kitchens and pool projects.</p></article>
+<!-- CUSTOM HOMES -->
+<section id="services" class="homes" aria-labelledby="ch-h">
+  <div class="wrap hgrid">
+    <div class="htext">
+      <h2 id="ch-h" class="rv" data-i="chH">Custom homes</h2>
+      <article class="srv rv"><h3 data-i="s1h">Build in a neighborhood</h3><p data-i="s1p">Choose a homesite in one of the communities we build in.</p></article>
+      <article class="srv rv"><h3 data-i="s2h">Build on your lot</h3><p data-i="s2p">Already own land in the Twin Cities? We design and build the home around your site.</p></article>
+      <article class="srv rv"><h3 data-i="s3h">Tear-down and rebuild</h3><p data-i="s3p">Keep the location you love and replace the house with a new custom home.</p></article>
+      <h3 class="hoods-h rv" data-i="hdH">Communities</h3>
+      <ul class="hoods rv">
+        <li><b>Cherry Meadow</b><span>Woodbury</span></li>
+        <li><b>Elliott Crossing</b><span>Grant</span></li>
+        <li><b>Old Wildwood Oaks</b><span>Mahtomedi</span></li>
+        <li><b>Hartung Farm</b><span>Woodbury</span></li>
+        <li><b>The Gateway</b><span>Grant</span></li>
+        <li><b>Aster Landing</b><span>Woodbury</span></li>
+      </ul>
     </div>
-    <p class="credit" style="margin-top:20px"><span data-i="s7">Looking to buy a finished home?</span> <a href="https://kooteniahomes.com/available/" target="_blank" rel="noopener noreferrer" data-i="s7l">See available homes on kooteniahomes.com</a></p>
+    <figure class="hfig rv"><img src="assets/g/22.webp" alt="" width="1600" height="1066" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- REMODELING -->
+<section id="remodeling" class="remod" aria-labelledby="rm-h">
+  <div class="wrap hgrid rev">
+    <figure class="hfig rv"><img src="assets/g/08.webp" alt="" width="1600" height="1066" loading="lazy"></figure>
+    <div class="htext">
+      <h2 id="rm-h" class="rv" data-i="rmH">Remodeling</h2>
+      <article class="srv rv"><h3 data-i="s4h">Kitchens and owner's suites</h3><p data-i="s4p">Kitchen remodels and owner's suite and bath renovations.</p></article>
+      <article class="srv rv"><h3 data-i="s5h">Lower levels, additions, home offices</h3><p data-i="s5p">Finish a lower level, add space, or create a dedicated home office.</p></article>
+      <article class="srv rv"><h3 data-i="s6h">Outdoor living and pools</h3><p data-i="s6p">Patios, covered porches, outdoor kitchens and pool projects.</p></article>
+      <p class="note-s rv" data-i="svL">Scope and pricing depend on the lot and the design. Ask us.</p>
+      <p class="credit rv"><span data-i="s7">Looking to buy a finished home?</span> <a href="https://kooteniahomes.com/available/" target="_blank" rel="noopener noreferrer" data-i="s7l">See available homes on kooteniahomes.com</a></p>
+    </div>
   </div>
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="alt" aria-labelledby="gl-h">
+<section id="gallery" class="work" aria-labelledby="gl-h">
   <div class="wrap">
-    <div class="head rv"><div class="kick" data-i="glK">Projects</div><h2 id="gl-h" data-i="glH">Recent work, by type</h2></div>
-    <div class="chips" id="chips" role="group" aria-label="Filter projects"></div>
+    <div class="work-head rv"><h2 id="gl-h" data-i="glH">Our homes</h2>
+      <div class="chips" id="chips" role="group" aria-label="Filter projects"></div></div>
     <div class="gal" id="gal"></div>
-    <p class="credit" data-i="glC">Photos from kooteniahomes.com, used for this demo. Selected from their portfolio; project names are not shown.</p>
+    <div class="more"><button type="button" class="btn" id="more"></button></div>
+    <p class="credit" data-i="glC">Photos from kooteniahomes.com, used for this demo. Project names are not shown.</p>
   </div>
 </section>
 
 <!-- TOOLS -->
-<section id="tools" class="dark" aria-labelledby="tl-h">
+<section id="tools" class="tools" aria-labelledby="tl-h">
   <div class="wrap">
-    <div class="head rv"><div class="kick" data-i="tlK">Plan your budget</div><h2 id="tl-h" data-i="tlH">Three tools built on public data</h2><p class="lead" data-i="tlL">Regional figures from the Census Bureau, Zonda and Freddie Mac. They are not quotes from Kootenia Homes.</p></div>
+    <div class="head rv"><h2 id="tl-h" data-i="tlH">Three cost tools, built on public data</h2><p class="lead" data-i="tlL">Regional figures from the Census Bureau, Zonda and Freddie Mac. They are not quotes from Kootenia Homes.</p></div>
     <div class="tabs" role="tablist" aria-label="Tools">
       <button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1" data-i="tab1">Build cost</button>
       <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1" data-i="tab2">Remodel value</button>
@@ -399,7 +498,7 @@ footer img{height:22px;margin-bottom:14px}
         <div class="mini"><span data-i="c1b">Average, $169.78 per sq ft</span><span id="c1hi"></span></div>
         <div class="mini"><span data-i="c1c">With your lot cost</span><span id="c1tot"></span></div>
         <p class="note" data-i="c1x">Regional estimate, not a quote. A custom design can land above or below these figures. Final price from Kootenia Homes.</p>
-        <button type="button" class="btn brass" id="c1go" data-i="exact">Get an exact estimate</button>
+        <button type="button" class="btn pri" id="c1go" data-i="exact">Get an exact estimate</button>
         <p class="src" style="margin:14px 0 0" data-ih="c1src"></p>
       </div>
     </div>
@@ -418,7 +517,7 @@ footer img{height:22px;margin-bottom:14px}
         <div class="mini"><span data-i="c2b">Estimated resale value added</span><span id="c2val"></span></div>
         <div class="mini"><span data-i="c2c">Not recouped</span><span id="c2gap"></span></div>
         <p class="note" data-i="c2x">Study averages for Minneapolis, not Kootenia Homes pricing. Your project and home will differ.</p>
-        <button type="button" class="btn brass" id="c2go" data-i="exact">Get an exact estimate</button>
+        <button type="button" class="btn pri" id="c2go" data-i="exact">Get an exact estimate</button>
         <p class="src" style="margin:14px 0 0" data-ih="c2src"></p>
       </div>
     </div>
@@ -439,7 +538,7 @@ footer img{height:22px;margin-bottom:14px}
         <div class="mini"><span data-i="c3b">Down payment</span><span id="c3dp"></span></div>
         <div class="mini"><span data-i="c3c">Total interest over the term</span><span id="c3int"></span></div>
         <p class="note" data-i="c3x">Rates change weekly. Default price is the 2025 Midwest median for new homes sold (includes the lot). Not a loan offer.</p>
-        <button type="button" class="btn brass" id="c3go" data-i="exact">Get an exact estimate</button>
+        <button type="button" class="btn pri" id="c3go" data-i="exact">Get an exact estimate</button>
         <p class="src" style="margin:14px 0 0" data-ih="c3src"></p>
       </div>
     </div>
@@ -447,67 +546,71 @@ footer img{height:22px;margin-bottom:14px}
 </section>
 
 <!-- PROCESS -->
-<section id="process" aria-labelledby="pr-h">
-  <div class="wrap">
-    <div class="head rv"><div class="kick" data-i="prK">How we work</div><h2 id="pr-h" data-i="prH">Five steps from first call to move-in</h2><p class="lead" data-i="prL">The steps below follow the process on kooteniahomes.com. Timelines depend on the project: ask us.</p></div>
-    <div class="steps">
-      <div class="step rv"><h3 data-i="p1h">Consultation</h3><p data-i="p1p">We learn how you live: communities, size, style, budget and timeline.</p></div>
-      <div class="step rv"><h3 data-i="p2h">Design</h3><p data-i="p2p">Floor plan, exterior and structural choices shaped around your homesite and budget.</p></div>
-      <div class="step rv"><h3 data-i="p3h">Selections</h3><p data-i="p3p">Cabinetry, flooring, lighting, counters and finishes, chosen with showroom partners.</p></div>
-      <div class="step rv"><h3 data-i="p4h">Build</h3><p data-i="p4p">Site walkthroughs, project meetings and updates through the client portal.</p></div>
-      <div class="step rv"><h3 data-i="p5h">Move in</h3><p data-i="p5p">Final walkthrough and handover, backed by the warranty and customer care.</p></div>
+<section id="process" class="proc" aria-labelledby="pr-h">
+  <div class="wrap pgrid">
+    <figure class="pfig rv"><img src="assets/g/25.webp" alt="" width="1600" height="1066" loading="lazy"></figure>
+    <div>
+      <h2 id="pr-h" class="rv" data-i="prH">Five steps from first call to move-in</h2>
+      <p class="lead rv" data-i="prL">Five steps, as described on kooteniahomes.com. Timelines depend on the project.</p>
+      <ol class="steps">
+        <li class="step rv"><h3 data-i="p1h">Consultation</h3><p data-i="p1p">We learn how you live: communities, size, style, budget and timeline.</p></li>
+        <li class="step rv"><h3 data-i="p2h">Design</h3><p data-i="p2p">Floor plan, exterior and structural choices shaped around your homesite and budget.</p></li>
+        <li class="step rv"><h3 data-i="p3h">Selections</h3><p data-i="p3p">Cabinetry, flooring, lighting, counters and finishes, chosen with showroom partners.</p></li>
+        <li class="step rv"><h3 data-i="p4h">Build</h3><p data-i="p4p">Site walkthroughs, project meetings and updates through the client portal.</p></li>
+        <li class="step rv"><h3 data-i="p5h">Move in</h3><p data-i="p5p">Final walkthrough and handover, backed by the warranty and customer care.</p></li>
+      </ol>
     </div>
   </div>
 </section>
 
 <!-- AWARDS -->
-<section id="awards" class="alt" aria-labelledby="aw-h">
-  <div class="wrap two">
+<section id="awards" class="awards" aria-labelledby="aw-h">
+  <div class="wrap agrid">
     <div class="rv">
-      <div class="kick" data-i="awK">Recognition</div><h2 id="aw-h" data-i="awH">Awards</h2>
-      <p class="lead" style="margin-bottom:22px" data-i="awL">As listed on kooteniahomes.com/awards.</p>
-      <ul class="list">
+      <h2 id="aw-h" data-i="awH">Awards</h2>
+      <p class="lead" data-i="awL">As listed on kooteniahomes.com/awards.</p>
+      <ul class="big">
         <li><b data-i="aw1">Builder of the Year</b><small data-i="aw1s">Builders Association of the Twin Cities</small></li>
         <li><b data-i="aw2">Reggie Award, 16 nonconsecutive years</b><small data-i="aw2s">Builders Association of the Twin Cities</small></li>
         <li><b data-i="aw3">Six-time Trillium Award</b><small data-i="aw3s">Architecture, interior design, lighting, cabinetry and masonry</small></li>
       </ul>
     </div>
-    <div class="rv">
-      <div class="kick" data-i="prsK">In the press</div><h2 data-i="prsH">Featured in</h2>
-      <p class="lead" style="margin-bottom:22px" data-i="prsL">As listed on kooteniahomes.com/press.</p>
-      <ul class="list">
+    <div class="rv press">
+      <h2 data-i="prsH">Featured in</h2>
+      <p class="lead" data-i="prsL">As listed on kooteniahomes.com/press.</p>
+      <ul class="plain">
         <li><b>Houzz</b><small data-i="prs1">2026 design trends; Bathroom of the Week</small></li>
         <li><b>Artful Living</b><small data-i="prs2">Winter 2026</small></li>
-        <li><b>Midwest Design, Builder Magazine, Woodbury Magazine, White Bear Lake Mag, One Kindesign</b></li>
         <li><b data-i="prs3">2021 Fall Parade of Homes</b><small data-i="prs3s">Cover feature</small></li>
+        <li class="mags">Midwest Design, Builder Magazine, Woodbury Magazine, White Bear Lake Mag, One Kindesign</li>
       </ul>
     </div>
   </div>
 </section>
 
 <!-- AREA -->
-<section id="area" aria-labelledby="ar-h">
-  <div class="wrap two">
+<section id="area" class="area" aria-labelledby="ar-h">
+  <div class="wrap agrid2">
     <div class="rv">
-      <div class="kick" data-i="arK">Service area</div><h2 id="ar-h" data-i="arH">Twin Cities East Metro</h2>
+      <h2 id="ar-h" data-i="arH">Twin Cities East Metro</h2>
       <p class="lead" data-i="arL">Hundreds of homes built in these communities, per kooteniahomes.com. We also build on lots across the Twin Cities.</p>
-      <div class="pills"><span>Afton</span><span>Grant</span><span>Lake Elmo</span><span>North Oaks</span><span>Stillwater</span><span>Woodbury</span><span>Mahtomedi</span></div>
-      <address style="font-style:normal;color:var(--muted)">Kootenia Homes, LLC<br>1890 Wooddale Dr, Ste 400<br>Woodbury, MN 55125</address>
-      <p style="margin-top:16px"><a href="https://www.google.com/maps/search/?api=1&query=1890+Wooddale+Dr+Ste+400+Woodbury+MN+55125" target="_blank" rel="noopener noreferrer" data-i="arMaps">Open the address in Google Maps</a></p>
+      <p class="towns">Afton, Grant, Lake Elmo, North Oaks, Stillwater, Woodbury, Mahtomedi</p>
+      <address>Kootenia Homes, LLC<br>1890 Wooddale Dr, Ste 400<br>Woodbury, MN 55125</address>
+      <p><a class="tl" href="https://www.google.com/maps/search/?api=1&query=1890+Wooddale+Dr+Ste+400+Woodbury+MN+55125" target="_blank" rel="noopener noreferrer" data-i="arMaps">Open the address in Google Maps</a></p>
     </div>
     <div class="rv">
       <div class="mapbox" id="mapbox">
-        <div><p data-i="arMap">The map loads from OpenStreetMap only when you tap the button.</p><button type="button" class="btn line" id="mapbtn" data-i="arMapBtn">Show map of Woodbury, MN</button></div>
+        <div><p data-i="arMap">The map loads from OpenStreetMap only when you tap the button.</p><button type="button" class="btn" id="mapbtn" data-i="arMapBtn">Show map of Woodbury, MN</button></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- LICENSE -->
-<section id="license" class="alt" aria-labelledby="li-h">
-  <div class="wrap lic">
+<section id="license" class="lic" aria-labelledby="li-h">
+  <div class="wrap lgrid">
     <div class="rv">
-      <div class="kick" data-i="liK">License, warranty and insurance</div><h2 id="li-h" data-i="liH">Licensed in Minnesota</h2>
+      <h2 id="li-h" data-i="liH">Licensed in Minnesota</h2>
       <dl class="kv">
         <dt data-i="liA">License</dt><dd>BC686614 <span class="badge" data-i="liB">ISSUED</span></dd>
         <dt data-i="liC">Type</dt><dd data-i="liD">Residential Building Contractor</dd>
@@ -516,11 +619,11 @@ footer img{height:22px;margin-bottom:14px}
         <dt data-i="liG">Checked</dt><dd data-i="liH2">11/04/2026, Minnesota DLI public license data</dd>
         <dt data-i="liI">Insurance</dt><dd data-i="liJ">Ask us for a certificate</dd>
       </dl>
-      <p><a href="https://secure.doli.state.mn.us/lookup/licensing.aspx" target="_blank" rel="noopener noreferrer" data-i="liL">Verify on the Minnesota DLI license lookup</a></p>
+      <p><a class="tl" href="https://secure.doli.state.mn.us/lookup/licensing.aspx" target="_blank" rel="noopener noreferrer" data-i="liL">Verify on the Minnesota DLI license lookup</a></p>
     </div>
-    <div class="card rv">
+    <div class="rv wty">
       <h3 data-i="wH">Warranty and customer care</h3>
-      <ul style="color:var(--ink);font-size:17px;margin:14px 0">
+      <ul>
         <li data-i="w1">One-year craftsmanship warranty</li>
         <li data-i="w2">Two-year mechanical warranty (electrical, plumbing, HVAC)</li>
         <li data-i="w3">Ten-year structural warranty</li>
@@ -531,24 +634,24 @@ footer img{height:22px;margin-bottom:14px}
 </section>
 
 <!-- FAQ -->
-<section id="faq" aria-labelledby="fq-h">
-  <div class="wrap" style="max-width:860px">
-    <div class="head rv"><div class="kick" data-i="fqK">Questions</div><h2 id="fq-h" data-i="fqH">Frequently asked</h2></div>
+<section id="faq" class="faq" aria-labelledby="fq-h">
+  <div class="wrap fwrap">
+    <h2 id="fq-h" class="rv" data-i="fqH">Common questions</h2>
     <div id="faqs"></div>
   </div>
 </section>
 
 <!-- ESTIMATE -->
-<section id="estimate" class="alt" aria-labelledby="es-h">
+<section id="estimate" class="est-s" aria-labelledby="es-h">
   <div class="wrap cgrid">
     <div class="rv">
-      <div class="kick" data-i="esK">Contact</div><h2 id="es-h" data-i="esH">Tell us about your project</h2>
+      <h2 id="es-h" data-i="esH">Tell us what you want to build</h2>
       <ul class="cl">
         <li><small data-i="mCall">Call</small><a href="tel:+16517312345">(651) 731-2345</a></li>
         <li><small data-i="mText">Text</small><a href="sms:+16517312345">(651) 731-2345</a></li>
         <li><small data-i="mEmail">Email</small><a href="mailto:dfrosch@kootenia.com">dfrosch@kootenia.com</a></li>
         <li><small data-i="esAddr">Office</small><span>1890 Wooddale Dr, Ste 400, Woodbury, MN 55125</span></li>
-        <li><small data-i="esSoc">Follow</small><span><a href="https://www.instagram.com/kooteniahomes/" target="_blank" rel="noopener noreferrer">Instagram</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/Kootenia/" target="_blank" rel="noopener noreferrer">Facebook</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/company/kootenia-homes/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></li>
+        <li><small data-i="esSoc">Follow</small><span class="soc"><a href="https://www.instagram.com/kooteniahomes/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/Kootenia/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.linkedin.com/company/kootenia-homes/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></li>
       </ul>
     </div>
     <form class="est rv" id="form" novalidate>
@@ -570,20 +673,20 @@ footer img{height:22px;margin-bottom:14px}
         <div class="field"><label for="fa" data-i="fAddr">Project address or city</label><input id="fa" name="addr" type="text" autocomplete="street-address"></div>
       </div>
       <div class="field"><label for="fm" data-i="fMsg">Anything else we should know?</label><textarea id="fm" name="msg"></textarea></div>
-      <button type="submit" class="btn brass" data-i="fSend">Request my estimate</button>
+      <button type="submit" class="btn pri" data-i="fSend">Request my estimate</button>
       <div class="sent" id="sent" role="status" tabindex="-1"></div>
     </form>
   </div>
 </section>
 </main>
 
-<div class="demo-bar foot" role="note"><span data-i="demo">Demo concept, not the official website of Kootenia Homes.</span> <a href="https://kooteniahomes.com/" rel="noopener noreferrer" data-i="demoLink">Official site: kooteniahomes.com</a></div>
 <footer>
   <div class="wrap fg">
-    <div><img src="assets/logo-light.webp" alt="Kootenia" width="170" height="22"><p data-i="foA">Custom home builder and renovation, Woodbury, Minnesota. Company details from kooteniahomes.com.</p></div>
-    <div><b style="color:#fff" data-i="foB">Contact</b><p>1890 Wooddale Dr, Ste 400<br>Woodbury, MN 55125<br><a href="tel:+16517312345">(651) 731-2345</a><br><a href="mailto:dfrosch@kootenia.com">dfrosch@kootenia.com</a></p></div>
-    <div><b style="color:#fff" data-i="foC">About this demo</b><p data-i="foD">Home photos: kooteniahomes.com. Hero video: Pexels stock footage, not company projects. No cookies, no analytics, no third-party scripts.</p></div>
+    <div><img src="assets/logo-light.webp" alt="Kootenia" width="337" height="39"><p data-i="foA">Custom home builder and renovation, Woodbury, Minnesota. Company details from kooteniahomes.com.</p></div>
+    <div><b data-i="foB">Contact</b><p>1890 Wooddale Dr, Ste 400<br>Woodbury, MN 55125<br><a href="tel:+16517312345">(651) 731-2345</a><br><a href="mailto:dfrosch@kootenia.com">dfrosch@kootenia.com</a></p></div>
+    <div><b data-i="foC">About this demo</b><p data-i="foD">Home photos: kooteniahomes.com. Hero video: Pexels stock footage, not company projects. No cookies, no analytics, no third-party scripts.</p></div>
   </div>
+  <div class="demo-bar foot" role="note"><span data-i="demo">Demo concept, not the official website of Kootenia Homes.</span> <a href="https://kooteniahomes.com/" rel="noopener noreferrer" data-i="demoLink">Official site: kooteniahomes.com</a></div>
 </footer>
 
 <div class="bbar" aria-label="Quick actions">
@@ -608,16 +711,27 @@ document.documentElement.classList.add('js');
 'use strict';
 var D={
 en:{
+less:'Show fewer',
+showAll:'Show all {n} photos',
+hdH:'Communities we build in',
+rmH:'Remodeling',
+chH:'Custom homes',
+inP:'Kootenia Homes designs and builds custom homes and remodels existing ones from its Woodbury office.',
+inH:'Family-owned since 1969',
+nAbout:'About',
+nOH:'Our Homes',
+nRM:'Remodeling',
+nCH:'Custom Homes',
 skip:'Skip to content',demo:'Demo concept, not the official website of Kootenia Homes.',demoLink:'Official site: kooteniahomes.com',
-nServices:'Services',nProjects:'Projects',nTools:'Cost tools',nProcess:'Process',nFaq:'FAQ',contact:'Contact',mCall:'Call',mText:'Text',mEmail:'Email',mEst:'Request an estimate',mEstSub:'Use the form below',
-eyebrow:'Custom homes and remodeling since 1969',h1:'Custom homes and remodeling in Woodbury and the east Twin Cities',sub:'Family-owned builder serving Afton, Grant, Lake Elmo, North Oaks, Stillwater and Woodbury, Minnesota.',ctaEst:'Get a free estimate',ctaCall:'Call',stock:'Stock footage, not company projects',
-f1:'Founded, family-owned (per kooteniahomes.com)',f2:'MN residential building contractor license, active',f3b:'1 / 2 / 10 yr',f3:'Year craftsmanship, mechanical and structural warranty',f4b:'East Metro',f4:'Woodbury office, Twin Cities service area',
-svK:'What we do',svH:'Build, rebuild or renovate',svL:'Every service below is listed on kooteniahomes.com. Ask us for scope and pricing on your project.',
+nServices:'Services',nProjects:'Projects',nTools:'Cost tools',nProcess:'Process',nFaq:'FAQ',contact:'Contact',mCall:'Call',mText:'Text',mEmail:'Email',mEst:'Free estimate',mEstSub:'Use the form below',
+eyebrow:'Custom homes and remodeling since 1969',h1:'Custom homes and remodeling in Woodbury and the east Twin Cities',sub:'Building in Afton, Grant, Lake Elmo, North Oaks, Stillwater and Woodbury since 1969.',ctaEst:'Free estimate',ctaCall:'Call',stock:'Stock footage, not company projects',
+f1:'Founded, family-owned',f2:'MN residential building contractor license',f3b:'1 / 2 / 10 yr',f3:'Year craftsmanship, mechanical and structural warranty',f4b:'East Metro',f4:'Woodbury office, Twin Cities service area',
+svK:'What we do',svH:'Build, rebuild or renovate',svL:'Scope and pricing depend on the lot and the design. Ask us.',
 s1t:'New homes',s1h:'Build in a neighborhood',s1p:'Choose a homesite in one of the communities we build in.',s2t:'New homes',s2h:'Build on your lot',s2p:'Already own land in the Twin Cities? We design and build the home around your site.',s3t:'New homes',s3h:'Tear-down and rebuild',s3p:'Keep the location you love and replace the house with a new custom home.',
 s4t:'Renovation',s4h:'Kitchens and owner’s suites',s4p:'Kitchen remodels and owner’s suite and bath renovations.',s5t:'Renovation',s5h:'Lower levels, additions, home offices',s5p:'Finish a lower level, add space, or create a dedicated home office.',s6t:'Renovation',s6h:'Outdoor living and pools',s6p:'Patios, covered porches, outdoor kitchens and pool projects.',s7:'Looking to buy a finished home?',s7l:'See available homes on kooteniahomes.com',
-glK:'Projects',glH:'Recent work, by type',glC:'Photos from kooteniahomes.com, used for this demo. Selected from their portfolio; project names are not shown.',
+glK:'Projects',glH:'Our homes',glC:'Photos from kooteniahomes.com, used for this demo. Project names are not shown.',
 fAll:'All',fNew:'New homes',fKit:'Kitchens',fLiv:'Living spaces',fBath:'Baths',fOut:'Outdoor',fSite:'Sites',filter:'Filter projects',
-tlK:'Cost tools',tlH:'Three tools built on public data',tlL:'Regional figures from the Census Bureau, Zonda and Freddie Mac. They are not quotes from Kootenia Homes.',tab1:'Build cost',tab2:'Remodel value',tab3:'Monthly payment',exact:'Get an exact estimate',
+tlK:'Cost tools',tlH:'Three cost tools, built on public data',tlL:'Regional figures from the Census Bureau, Zonda and Freddie Mac. They are not quotes from Kootenia Homes.',tab1:'Build cost',tab2:'Remodel value',tab3:'Monthly payment',exact:'Ask for an exact figure',
 c1h:'What does a new home cost to build?',c1n:'Midwest, new detached single-family homes sold in 2025. Price per square foot excludes the lot.',c1l:'Finished floor area (sq ft)',c1lot:'Lot cost, if you want it included (optional)',c1o:'Estimated construction cost',c1a:'Median, $160.00 per sq ft',c1b:'Average, $169.78 per sq ft',c1c:'With your lot cost (median to average)',c1x:'Regional estimate, not a quote. A custom design can land above or below these figures. Final price from Kootenia Homes.',
 c1src:'Source: U.S. Census Bureau, <a href="https://www.census.gov/construction/chars/" rel="noopener noreferrer" target="_blank">Characteristics of New Housing</a>, 2025 annual data (released July 1, 2026), Midwest, detached, sold.',
 c2h:'How much of a remodel comes back at resale?',c2n:'Minneapolis figures from the 2025 Cost vs. Value report. Each project is a defined scope in that study.',c2l:'Project',c2o:'Share of cost recouped at resale',c2a:'Average job cost',c2b:'Estimated resale value added',c2c:'Not recouped',c2x:'Study averages for Minneapolis, not Kootenia Homes pricing. Your project and home will differ.',
@@ -625,22 +739,22 @@ c2src:'Source: Zonda Media / Journal of Light Construction, <a href="https://www
 c3h:'What would the monthly payment be?',c3n:'Principal and interest only. Taxes, insurance and mortgage insurance are not included.',c3p:'Home price ($)',c3d:'Down payment (%)',c3t:'Loan term',c3r:'Interest rate (%)',c3o:'Estimated monthly payment',c3a:'Loan amount',c3b:'Down payment',c3c:'Total interest over the term',c3x:'Rates change weekly. Default price is the 2025 Midwest median for new homes sold (includes the lot). Not a loan offer.',
 c3src:'Rates: <a href="https://www.freddiemac.com/pmms" rel="noopener noreferrer" target="_blank">Freddie Mac PMMS</a>, week of Oct 29, 2026: 30-year fixed 7.24%, 15-year fixed 6.60%. Default price: Census CHARS 2025, Midwest median sales price $387,400.',
 y30:'30 years',y15:'15 years',
-prK:'How we work',prH:'Five steps from first call to move-in',prL:'The steps below follow the process on kooteniahomes.com. Timelines depend on the project: ask us.',
+prK:'How we work',prH:'Five steps from first call to move-in',prL:'Five steps, as described on kooteniahomes.com. Timelines depend on the project.',
 p1h:'Consultation',p1p:'We learn how you live: communities, size, style, budget and timeline.',p2h:'Design',p2p:'Floor plan, exterior and structural choices shaped around your homesite and budget.',p3h:'Selections',p3p:'Cabinetry, flooring, lighting, counters and finishes, chosen with showroom partners.',p4h:'Build',p4p:'Site walkthroughs, project meetings and updates through the client portal.',p5h:'Move in',p5p:'Final walkthrough and handover, backed by the warranty and customer care.',
 awK:'Recognition',awH:'Awards',awL:'As listed on kooteniahomes.com/awards.',aw1:'Builder of the Year',aw1s:'Builders Association of the Twin Cities',aw2:'Reggie Award, 16 nonconsecutive years',aw2s:'Builders Association of the Twin Cities',aw3:'Six-time Trillium Award',aw3s:'Architecture, interior design, lighting, cabinetry and masonry',
 prsK:'In the press',prsH:'Featured in',prsL:'As listed on kooteniahomes.com/press.',prs1:'2026 design trends; Bathroom of the Week',prs2:'Winter 2026',prs3:'2021 Fall Parade of Homes',prs3s:'Cover feature',
 arK:'Service area',arH:'Twin Cities East Metro',arL:'Hundreds of homes built in these communities, per kooteniahomes.com. We also build on lots across the Twin Cities.',arMaps:'Open the address in Google Maps',arMap:'The map loads from OpenStreetMap only when you tap the button.',arMapBtn:'Show map of Woodbury, MN',
 liK:'License, warranty and insurance',liH:'Licensed in Minnesota',liA:'License',liB:'ISSUED',liC:'Type',liD:'Residential Building Contractor',liE:'Licensee',liF:'Expires',liG:'Checked',liH2:'Nov 4, 2026, Minnesota DLI public license data',liFv:'Mar 31, 2028',liI:'Insurance',liJ:'Ask us for a certificate',liL:'Verify on the Minnesota DLI license lookup',
 wH:'Warranty and customer care',w1:'One-year craftsmanship warranty',w2:'Two-year mechanical warranty (electrical, plumbing, HVAC)',w3:'Ten-year structural warranty',wP:'Homeowners follow their project in an online client portal, available around the clock. Terms per kooteniahomes.com/warranty.',
-fqK:'Questions',fqH:'Frequently asked',
+fqK:'Questions',fqH:'Common questions',
 q1:'How does building a custom home work?',a1:'Five steps: consultation, design, selections, build and move-in. During the build you get site walkthroughs, project meetings and updates in the online client portal.',
 q2:'Can you build on land I already own?',a2:'Yes. Kootenia Homes lists “build on your lot” across the Twin Cities, and also tear-downs and rebuilds.',
 q3:'What remodeling do you do?',a3:'Kitchens, lower levels, additions, home offices, owner’s suites and baths, and outdoor living with pools.',
 q4:'What does the warranty cover?',a4:'One year on craftsmanship, two years on mechanical systems (electrical, plumbing, HVAC) and ten years on structural elements, per kooteniahomes.com/warranty.',
 q5:'Is Kootenia Homes licensed?',a5:'Yes. Minnesota residential building contractor license BC686614 shows status Issued with an expiration of March 31, 2028 in the state’s public data, checked November 4, 2026.',
 q6:'How much will my project cost?',a6:'It depends on size, site and selections. The tools above show regional figures only. Send the form or call for a real estimate.',
-esK:'Contact',esH:'Tell us about your project',esAddr:'Office',esSoc:'Follow',
-fNote:'Demo form. Not sent: this is a demo. Nothing you type leaves this page.',fName:'Name',fPhone:'Phone',fEmail:'Email',fType:'Project type',fTime:'Timeline',fBudget:'Budget range',fAddr:'Project address or city',fMsg:'Anything else we should know?',fSend:'Request my estimate',
+esK:'Contact',esH:'Tell us what you want to build',esAddr:'Office',esSoc:'Follow',
+fNote:'Demo form. Not sent: this is a demo. Nothing you type leaves this page.',fName:'Name',fPhone:'Phone',fEmail:'Email',fType:'Project type',fTime:'Timeline',fBudget:'Budget range',fAddr:'Project address or city',fMsg:'Anything else we should know?',fSend:'Send request',
 oNew:'New custom home',oLot:'Build on my lot',oTd:'Tear-down and rebuild',oKit:'Kitchen remodel',oBath:'Bath or owner’s suite',oLl:'Lower level',oAdd:'Addition or home office',oOut:'Outdoor living or pool',oOther:'Not sure yet',
 tAsap:'As soon as possible',t3:'Within 3 months',t6:'3 to 6 months',t12:'6 to 12 months',tPlan:'Just planning',
 b1:'Under $250,000',b2:'$250,000 to $500,000',b3:'$500,000 to $1,000,000',b4:'$1,000,000 or more',b5:'Not sure yet',
@@ -655,16 +769,27 @@ alt:['New two-story home with three-car garage','Contemporary home with wood and
 sum:{type:'Project',timeline:'Timeline',budget:'Budget',addr:'Address'}
 },
 es:{
+less:'Mostrar menos',
+showAll:'Mostrar las {n} fotos',
+hdH:'Comunidades donde construimos',
+rmH:'Remodelaciones',
+chH:'Casas a medida',
+inP:'Kootenia Homes diseña y construye casas a medida y remodela casas existentes desde su oficina en Woodbury.',
+inH:'Empresa familiar desde 1969',
+nAbout:'Nosotros',
+nOH:'Nuestras casas',
+nRM:'Remodelaciones',
+nCH:'Casas a medida',
 skip:'Saltar al contenido',demo:'Concepto de demostración, no es el sitio web oficial de Kootenia Homes.',demoLink:'Sitio oficial: kooteniahomes.com',
-nServices:'Servicios',nProjects:'Proyectos',nTools:'Calculadoras',nProcess:'Proceso',nFaq:'Preguntas',contact:'Contacto',mCall:'Llamar',mText:'Mensaje de texto',mEmail:'Correo',mEst:'Pedir una cotización',mEstSub:'Use el formulario de abajo',
-eyebrow:'Casas a medida y remodelación desde 1969',h1:'Casas a medida y remodelación en Woodbury y el este de las Ciudades Gemelas',sub:'Constructora familiar en Afton, Grant, Lake Elmo, North Oaks, Stillwater y Woodbury, Minnesota.',ctaEst:'Cotización gratis',ctaCall:'Llamar',stock:'Video de stock, no son proyectos de la empresa',
-f1:'Fundada en 1969, empresa familiar (según kooteniahomes.com)',f2:'Licencia de contratista residencial de MN, vigente',f3b:'1 / 2 / 10 años',f3:'Años de garantía de mano de obra, sistemas y estructura',f4b:'Este de Twin Cities',f4:'Oficina en Woodbury, área de las Ciudades Gemelas',
-svK:'Lo que hacemos',svH:'Construir, reconstruir o renovar',svL:'Todos estos servicios figuran en kooteniahomes.com. Pregunte por el alcance y el precio de su proyecto.',
+nServices:'Servicios',nProjects:'Proyectos',nTools:'Calculadoras',nProcess:'Proceso',nFaq:'Preguntas',contact:'Contacto',mCall:'Llamar',mText:'Mensaje de texto',mEmail:'Correo',mEst:'Cotización gratis',mEstSub:'Use el formulario de abajo',
+eyebrow:'Casas a medida y remodelación desde 1969',h1:'Casas a medida y remodelaciones en Woodbury y el este de las Ciudades Gemelas',sub:'Construimos en Afton, Grant, Lake Elmo, North Oaks, Stillwater y Woodbury desde 1969.',ctaEst:'Cotización gratis',ctaCall:'Llamar',stock:'Video de stock, no son proyectos de la empresa',
+f1:'Fundada, empresa familiar',f2:'Licencia de contratista residencial de MN',f3b:'1 / 2 / 10 años',f3:'Años de garantía de mano de obra, sistemas y estructura',f4b:'Este de Twin Cities',f4:'Oficina en Woodbury, área de las Ciudades Gemelas',
+svK:'Lo que hacemos',svH:'Construir, reconstruir o renovar',svL:'El alcance y el precio dependen del terreno y del diseño. Consúltenos.',
 s1t:'Casas nuevas',s1h:'Construir en un vecindario',s1p:'Elija un terreno en una de las comunidades donde construimos.',s2t:'Casas nuevas',s2h:'Construir en su terreno',s2p:'¿Ya tiene un lote en las Ciudades Gemelas? Diseñamos y construimos la casa para su terreno.',s3t:'Casas nuevas',s3h:'Demoler y reconstruir',s3p:'Quédese en la ubicación que le gusta y cambie la casa por una nueva a medida.',
 s4t:'Remodelación',s4h:'Cocinas y suites principales',s4p:'Remodelación de cocinas y renovación de la suite principal y el baño.',s5t:'Remodelación',s5h:'Sótanos, ampliaciones y oficinas',s5p:'Termine un sótano, agregue espacio o cree una oficina en casa.',s6t:'Remodelación',s6h:'Espacios exteriores y piscinas',s6p:'Patios, porches cubiertos, cocinas exteriores y piscinas.',s7:'¿Busca comprar una casa terminada?',s7l:'Vea las casas disponibles en kooteniahomes.com',
-glK:'Proyectos',glH:'Trabajos recientes, por tipo',glC:'Fotos de kooteniahomes.com, usadas en esta demostración. Seleccionadas de su portafolio; no se muestran nombres de proyectos.',
+glK:'Proyectos',glH:'Nuestras casas',glC:'Fotos de kooteniahomes.com, usadas en esta demostración. No se muestran nombres de proyectos.',
 fAll:'Todos',fNew:'Casas nuevas',fKit:'Cocinas',fLiv:'Interiores',fBath:'Baños',fOut:'Exteriores',fSite:'Lotes',filter:'Filtrar proyectos',
-tlK:'Calculadoras',tlH:'Tres herramientas con datos públicos',tlL:'Cifras regionales de la Oficina del Censo, Zonda y Freddie Mac. No son presupuestos de Kootenia Homes.',tab1:'Costo de construcción',tab2:'Valor de remodelación',tab3:'Pago mensual',exact:'Pedir una cotización exacta',
+tlK:'Calculadoras',tlH:'Tres calculadoras con datos públicos',tlL:'Cifras regionales de la Oficina del Censo, Zonda y Freddie Mac. No son presupuestos de Kootenia Homes.',tab1:'Costo de construcción',tab2:'Valor de remodelación',tab3:'Pago mensual',exact:'Pedir una cifra exacta',
 c1h:'¿Cuánto cuesta construir una casa nueva?',c1n:'Casas unifamiliares nuevas independientes vendidas en el Medio Oeste en 2025. El precio por pie cuadrado no incluye el terreno.',c1l:'Área habitable (pies cuadrados)',c1lot:'Costo del terreno, si desea incluirlo (opcional)',c1o:'Costo estimado de construcción',c1a:'Mediana, $160.00 por pie²',c1b:'Promedio, $169.78 por pie²',c1c:'Con el costo de su terreno (de mediana a promedio)',c1x:'Estimación regional, no es un presupuesto. Un diseño a medida puede costar más o menos. El precio final lo da Kootenia Homes.',
 c1src:'Fuente: Oficina del Censo de EE. UU., <a href="https://www.census.gov/construction/chars/" rel="noopener noreferrer" target="_blank">Characteristics of New Housing</a>, datos anuales 2025 (publicados el 1 de julio de 2026), Medio Oeste, casas independientes vendidas.',
 c2h:'¿Cuánto de una remodelación se recupera al vender?',c2n:'Cifras de Minneapolis del informe Cost vs. Value 2025. Cada proyecto tiene un alcance definido en ese estudio.',c2l:'Proyecto',c2o:'Parte del costo que se recupera al vender',c2a:'Costo promedio del trabajo',c2b:'Valor de reventa estimado que se agrega',c2c:'No recuperado',c2x:'Promedios del estudio para Minneapolis, no precios de Kootenia Homes. Su proyecto y su casa serán distintos.',
@@ -672,22 +797,22 @@ c2src:'Fuente: Zonda Media / Journal of Light Construction, <a href="https://www
 c3h:'¿Cuánto sería el pago mensual?',c3n:'Solo capital e intereses. No incluye impuestos, seguro ni seguro hipotecario.',c3p:'Precio de la casa ($)',c3d:'Pago inicial (%)',c3t:'Plazo del préstamo',c3r:'Tasa de interés (%)',c3o:'Pago mensual estimado',c3a:'Monto del préstamo',c3b:'Pago inicial',c3c:'Intereses totales en el plazo',c3x:'Las tasas cambian cada semana. El precio inicial es la mediana de 2025 en el Medio Oeste para casas nuevas vendidas (incluye el terreno). No es una oferta de préstamo.',
 c3src:'Tasas: <a href="https://www.freddiemac.com/pmms" rel="noopener noreferrer" target="_blank">Freddie Mac PMMS</a>, semana del 29 de oct. de 2026: fija a 30 años 7.24%, fija a 15 años 6.60%. Precio inicial: Census CHARS 2025, mediana del Medio Oeste $387,400.',
 y30:'30 años',y15:'15 años',
-prK:'Cómo trabajamos',prH:'Cinco pasos, de la primera llamada a la mudanza',prL:'Los pasos siguen el proceso de kooteniahomes.com. Los plazos dependen del proyecto: pregúntenos.',
+prK:'Cómo trabajamos',prH:'Cinco pasos, de la primera llamada a la mudanza',prL:'Cinco pasos, según kooteniahomes.com. Los plazos dependen del proyecto.',
 p1h:'Consulta',p1p:'Conocemos cómo vive usted: comunidad, tamaño, estilo, presupuesto y plazos.',p2h:'Diseño',p2p:'Plano, exterior y estructura pensados para su terreno y su presupuesto.',p3h:'Elección de acabados',p3p:'Gabinetes, pisos, iluminación, encimeras y acabados, elegidos con nuestros socios de showroom.',p4h:'Construcción',p4p:'Visitas a la obra, reuniones del proyecto y avances en el portal del cliente.',p5h:'Mudanza',p5p:'Recorrido final y entrega, con respaldo de la garantía y el servicio al cliente.',
 awK:'Reconocimientos',awH:'Premios',awL:'Según kooteniahomes.com/awards.',aw1:'Constructor del Año',aw1s:'Builders Association of the Twin Cities',aw2:'Premio Reggie, 16 años no consecutivos',aw2s:'Builders Association of the Twin Cities',aw3:'Premio Trillium, seis veces',aw3s:'Arquitectura, diseño interior, iluminación, gabinetes y mampostería',
 prsK:'En la prensa',prsH:'Publicado en',prsL:'Según kooteniahomes.com/press.',prs1:'Tendencias de diseño 2026; Baño de la Semana',prs2:'Invierno 2026',prs3:'Parade of Homes, otoño 2021',prs3s:'Portada',
 arK:'Área de servicio',arH:'Zona este de las Ciudades Gemelas',arL:'Cientos de casas construidas en estas comunidades, según kooteniahomes.com. También construimos en terrenos de toda el área.',arMaps:'Abrir la dirección en Google Maps',arMap:'El mapa se carga desde OpenStreetMap solo cuando toca el botón.',arMapBtn:'Mostrar mapa de Woodbury, MN',
 liK:'Licencia, garantía y seguro',liH:'Con licencia en Minnesota',liA:'Licencia',liB:'VIGENTE',liC:'Tipo',liD:'Contratista de construcción residencial',liE:'Titular',liF:'Vence',liG:'Verificada',liH2:'4 nov 2026, datos públicos de licencias de Minnesota (DLI)',liFv:'31 mar 2028',liI:'Seguro',liJ:'Pida un certificado',liL:'Verificar en la búsqueda de licencias del DLI de Minnesota',
 wH:'Garantía y servicio al cliente',w1:'Un año de garantía de mano de obra',w2:'Dos años de garantía de sistemas (eléctrico, plomería, HVAC)',w3:'Diez años de garantía estructural',wP:'Los propietarios siguen su proyecto en un portal en línea, disponible a toda hora. Condiciones según kooteniahomes.com/warranty.',
-fqK:'Preguntas',fqH:'Preguntas frecuentes',
+fqK:'Preguntas',fqH:'Preguntas comunes',
 q1:'¿Cómo funciona construir una casa a medida?',a1:'Cinco pasos: consulta, diseño, selecciones, construcción y mudanza. Durante la obra hay visitas, reuniones del proyecto y avances en el portal del cliente.',
 q2:'¿Pueden construir en un terreno que ya tengo?',a2:'Sí. Kootenia Homes ofrece construir en su lote en toda el área de las Ciudades Gemelas, además de demoler y reconstruir.',
 q3:'¿Qué remodelaciones hacen?',a3:'Cocinas, sótanos, ampliaciones, oficinas en casa, suites principales y baños, y espacios exteriores con piscina.',
 q4:'¿Qué cubre la garantía?',a4:'Un año en mano de obra, dos en sistemas (eléctrico, plomería, HVAC) y diez en elementos estructurales, según kooteniahomes.com/warranty.',
 q5:'¿Kootenia Homes tiene licencia?',a5:'Sí. La licencia BC686614 de contratista de construcción residencial de Minnesota figura como Issued (vigente), con vencimiento el 31 de marzo de 2028 en los datos públicos del estado, consultados el 4 de noviembre de 2026.',
 q6:'¿Cuánto costará mi proyecto?',a6:'Depende del tamaño, el terreno y los acabados. Las herramientas de arriba solo muestran cifras regionales. Envíe el formulario o llame para un presupuesto real.',
-esK:'Contacto',esH:'Cuéntenos de su proyecto',esAddr:'Oficina',esSoc:'Síganos',
-fNote:'Formulario de demostración. No se envía: esto es una demo. Nada de lo que escriba sale de esta página.',fName:'Nombre',fPhone:'Teléfono',fEmail:'Correo electrónico',fType:'Tipo de proyecto',fTime:'Plazo',fBudget:'Rango de presupuesto',fAddr:'Dirección o ciudad del proyecto',fMsg:'¿Algo más que debamos saber?',fSend:'Pedir mi cotización',
+esK:'Contacto',esH:'Cuéntenos qué quiere construir',esAddr:'Oficina',esSoc:'Síganos',
+fNote:'Formulario de demostración. No se envía: esto es una demo. Nada de lo que escriba sale de esta página.',fName:'Nombre',fPhone:'Teléfono',fEmail:'Correo electrónico',fType:'Tipo de proyecto',fTime:'Plazo',fBudget:'Rango de presupuesto',fAddr:'Dirección o ciudad del proyecto',fMsg:'¿Algo más que debamos saber?',fSend:'Enviar solicitud',
 oNew:'Casa nueva a medida',oLot:'Construir en mi terreno',oTd:'Demoler y reconstruir',oKit:'Remodelación de cocina',oBath:'Baño o suite principal',oLl:'Sótano',oAdd:'Ampliación u oficina en casa',oOut:'Espacio exterior o piscina',oOther:'Aún no sé',
 tAsap:'Lo antes posible',t3:'En 3 meses',t6:'De 3 a 6 meses',t12:'De 6 a 12 meses',tPlan:'Solo estoy planeando',
 b1:'Menos de $250,000',b2:'$250,000 a $500,000',b3:'$500,000 a $1,000,000',b4:'$1,000,000 o más',b5:'Aún no sé',
@@ -714,12 +839,16 @@ var G=[['new',1],['new',2],['new',3],['new',4],['kit',5],['kit',6],['kit',7],['k
 var CATS=[['all','fAll'],['new','fNew'],['kit','fKit'],['liv','fLiv'],['bath','fBath'],['out','fOut'],['site','fSite']];
 var curCat='all',shown=[],lbIdx=0;
 function pad(n){return (n<10?'0':'')+n}
+var expanded=false,LIM=7,WIDE=[0,4,5];
 function buildGallery(){
   var gal=q('#gal');gal.innerHTML='';
   G.forEach(function(g,i){
     var b=document.createElement('button');b.type='button';b.className='gi';b.dataset.cat=g[0];b.dataset.i=i;
-    var im=document.createElement('img');im.src='assets/g/'+pad(g[1])+'-t.webp';im.loading='lazy';im.decoding='async';im.width=640;im.height=480;im.alt=T('alt')[g[1]-1];
-    b.appendChild(im);b.addEventListener('click',function(){openLb(i)});gal.appendChild(b);
+    var ph=document.createElement('span');ph.className='ph';
+    var im=document.createElement('img');im.loading='lazy';im.decoding='async';im.width=640;im.height=426;im.alt='';im.dataset.n=pad(g[1]);im.src='assets/g/'+pad(g[1])+'-t.webp';
+    var c=document.createElement('span');c.className='cap';c.textContent=T('alt')[g[1]-1];
+    ph.appendChild(im);b.appendChild(ph);b.appendChild(c);
+    b.addEventListener('click',function(){openLb(i)});gal.appendChild(b);
   });
   var ch=q('#chips');ch.innerHTML='';
   CATS.forEach(function(c){
@@ -730,9 +859,24 @@ function buildGallery(){
 }
 function applyFilter(){
   qa('#chips .chip').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cat===curCat?'true':'false')});
+  var items=qa('#gal .gi');
+  var list=items.filter(function(b){return curCat==='all'||b.dataset.cat===curCat});
+  var lim=(curCat==='all'&&!expanded)?LIM:list.length;
   shown=[];
-  qa('#gal .gi').forEach(function(b){var ok=curCat==='all'||b.dataset.cat===curCat;b.hidden=!ok;if(ok)shown.push(+b.dataset.i)});
+  items.forEach(function(b){b.hidden=true;b.className='gi'});
+  list.forEach(function(b,k){
+    if(k>=lim)return;
+    var p=k%6;b.hidden=false;b.classList.add('p'+p);
+    var im=q('img',b),want='assets/g/'+im.dataset.n+(WIDE.indexOf(p)>-1?'':'-t')+'.webp';
+    if(im.getAttribute('src')!==want)im.src=want;
+    shown.push(+b.dataset.i);
+  });
+  var m=q('#more');
+  m.hidden=!(curCat==='all'&&list.length>LIM);
+  m.textContent=expanded?T('less'):T('showAll').replace('{n}',list.length);
 }
+q('#more').addEventListener('click',function(){expanded=!expanded;applyFilter()});
+
 function setLb(){
   var g=G[shown[lbIdx]];var im=q('#lbi');im.src='assets/g/'+pad(g[1])+'.webp';im.alt=T('alt')[g[1]-1];
   q('#lbc').textContent=T('alt')[g[1]-1]+' ('+(lbIdx+1)+' / '+shown.length+')';
@@ -899,47 +1043,11 @@ if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduc
 var start='en';
 try{var u=new URL(location.href).searchParams.get('lang');if(u==='en'||u==='es')start=u;else{var sv=localStorage.getItem('kh-lang');if(sv==='en'||sv==='es')start=sv;else if((navigator.language||'').toLowerCase().indexOf('es')===0)start='es'}}catch(e){}
 applyLang(start,false);calc1();calc2();calc3();
+
+function setDb(){document.documentElement.style.setProperty('--db',q('#demobar').offsetHeight+'px')}
+setDb();addEventListener('resize',setDb);
+
 })();
 </script>
-
-<!--
-SOURCES AND NOTES (demo built 11/04/2026)
-
-Company facts: kooteniahomes.com (home, about, process, warranty, awards, press, renovation and neighborhood pages, contact), read 11/04/2026.
-  Name Kootenia Homes, LLC; 1890 Wooddale Dr Ste 400, Woodbury MN 55125; phone (651) 731-2345; email dfrosch@kootenia.com;
-  founded 1969; family-owned; warranty 1 / 2 / 10 years; Instagram /kooteniahomes, Facebook /Kootenia, LinkedIn kootenia-homes, Houzz michaelleehomes.
-  Awards and press are quoted as listed on their awards and press pages. No reviews, insurance details or process durations are published on their site, so none are shown.
-  No WhatsApp or Messenger found. The "Text" button uses the main office number; whether it receives SMS is not verified.
-  Their footer also lists a Wisconsin license number; it was not verified here and is not shown.
-Photos: kooteniahomes.com/wp-content/uploads (their own portfolio and renovation galleries), resized and converted to WebP. Logo: same site.
-
-Licence: Minnesota Dept. of Labor and Industry public data export (secure.doli.state.mn.us/ccld/data/MNDLILicRegCertExport.zip, snapshot 11/04/2026).
-  KOOTENIA HOMES LLC, Residential Building Contractor, BC686614, status Issued, original date 10/14/2014, expires 03/31/2028, no enforcement action on record.
-  (KOOTENIA BUILDERS INC, BC001007, is a separate, expired entity and is not used.)
-
-Build cost tool: U.S. Census Bureau, Characteristics of New Housing, 2025 annual data, released July 1, 2026
-  (census.gov/construction/chars/xls/soldpricesqft_cust.xls, sheet SoldMedAvgPPSFDetach), Midwest, new detached single-family houses sold:
-  median $160.00 per sq ft, average $169.78 per sq ft, median size 2,130 sq ft. Price per sq ft excludes lot value.
-  Default price in the payment tool: Midwest 2025 median sales price of new single-family houses sold, $387,400 (soldprice_cust.xls), includes the lot.
-
-Remodel value tool: Zonda Media / Journal of Light Construction, 2025 Cost vs. Value Report (38th annual; latest edition at build time),
-  https://www.jlconline.com/cost-vs-value/2025/west-north-central/minneapolis-mn/ , Minneapolis column. Values (job cost / resale value):
-  Minor kitchen midrange 28,196/28,466; Major kitchen midrange 81,187/49,839; Major kitchen upscale 159,220/60,973;
-  Bath midrange 27,413/21,839; Bath upscale 84,166/33,398; Bath universal design 43,965/26,800; Basement 52,745/41,401;
-  Bathroom addition midrange 63,184/36,425; upscale 115,369/47,711; Primary suite addition midrange 175,685/67,638; upscale 361,745/70,156;
-  Deck wood 16,565/14,164; Deck composite 24,619/21,010; Accessory dwelling unit 169,673/81,180; Backyard patio 51,231/19,237; Window replacement wood 26,258/18,507.
-  Percent recouped is computed on the page as resale value divided by job cost.
-
-Payment tool: Freddie Mac Primary Mortgage Market Survey, week ending Oct 29, 2026: 30-year fixed 7.24%, 15-year fixed 6.60%
-  (freddiemac.com/pmms; 30-year cross-checked on FRED series MORTGAGE30US). Formula: M = P * r * (1+r)^n / ((1+r)^n - 1), r = annual rate / 12, n = years * 12.
-
-Hero video (stock, Pexels, free for commercial use, attribution not required; Pexels License read at pexels.com/license on 11/04/2026).
-  Edited into one 29 s loop, 1280x720, 30 fps, H.264, no audio. Clips (Pexels ID, creator):
-  4770380 David McBee; 17170560 Jaxon Matthew Willis; 8263308 Mark Embry; 17224730 Hamza Awan; 7578546 Kindel Media; 7578540 Kindel Media;
-  19228309 Curtis Adams; 8403602 Arsel Ozgurdal; 6356433 Curtis Adams. URL pattern: https://www.pexels.com/video/<id>/
-  Poster: frame from clip 8263308. Caption on page: "Stock footage, not company projects".
-
-Map: OpenStreetMap embed, loaded only after the visitor taps the button. No analytics, cookies or third-party scripts otherwise.
--->
 </body>
 </html>
