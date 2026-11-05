@@ -76,7 +76,7 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .btn.sm{min-height:46px;padding:9px 18px;font-size:15px}
 .navreg{display:none}
 .cwrap{position:relative}
-.cmenu{position:absolute;right:0;top:calc(100% + 10px);width:330px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--acc);padding:6px;display:none;z-index:60;box-shadow:0 14px 30px -14px rgba(31,35,33,.35)}
+.cmenu{position:absolute;right:0;top:calc(100% + 10px);width:330px;background:#fff;border:1px solid var(--line);padding:6px;display:none;z-index:60;box-shadow:0 14px 30px -14px rgba(31,35,33,.35)}
 .cmenu.open{display:block}
 .cmenu a{display:flex;flex-direction:column;padding:10px 14px;text-decoration:none;color:var(--ink);min-height:50px;justify-content:center}
 .cmenu a:hover,.cmenu a:focus-visible{background:var(--soft)}
@@ -120,7 +120,7 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .gi[hidden]{display:none}
 .gi .ph{display:block;overflow:hidden;background:#dfe0db;aspect-ratio:4/3}
 .gi img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.gi:hover img{transform:scale(1.03)}
+.gi:hover .cap b{text-decoration:underline}
 .gi .cap{display:block;font-size:14px;color:var(--mute);margin-top:9px;line-height:1.4}
 .gi .cap b{color:var(--ink);font-weight:600}
 @media (min-width:861px){
@@ -135,12 +135,10 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 /* intro facts */
 .intro{background:var(--soft)}
 .igrid{display:grid;grid-template-columns:5fr 7fr;gap:40px clamp(40px,6vw,100px);align-items:start}
-.facts{margin:0;display:grid;grid-template-columns:1fr 1fr}
-.f{margin:0;padding:22px 24px;border-left:1px solid var(--line);display:flex;flex-direction:column}
-.f:nth-child(odd){border-left:0;padding-left:0}
-.f:nth-child(n+3){border-top:1px solid var(--line)}
-.f dd{margin:0 0 6px;font:500 clamp(28px,3vw,42px)/1.05 var(--serif);color:var(--acc);letter-spacing:-.02em;order:1}
-.f dt{font-size:15px;color:var(--mute);line-height:1.45;order:2;max-width:32ch}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{padding:16px 0;border-top:1px solid var(--line);font-size:17px;color:var(--mute)}
+.facts li:last-child{border-bottom:1px solid var(--line)}
+.facts b{color:var(--ink);font-weight:600}
 
 /* services */
 .sv{border-top:1px solid var(--line)}
@@ -186,10 +184,9 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .seg button{border:1px solid var(--line);background:#fff;font:500 14px var(--sans);color:var(--ink);padding:9px 12px;min-height:44px;cursor:pointer;border-radius:2px}
 .seg button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
 .val{font:500 26px var(--serif);color:var(--acc)}
-.sum{background:var(--soft);padding:14px 16px;border-left:4px solid var(--acc);font-size:15px;margin-bottom:18px}
+.sum{background:var(--soft);padding:14px 16px;font-size:15px;margin-bottom:18px}
 .res{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pc{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
-.pc:hover{transform:translateY(-3px);box-shadow:0 14px 24px -18px rgba(0,0,0,.45)}
+.pc{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
 .pc .im{aspect-ratio:521/420;background:#e6e7e2;overflow:hidden}
 .pc .im img{width:100%;height:100%;object-fit:cover}
 .pc .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
@@ -201,7 +198,7 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .pc .act button{border:0;background:none;padding:8px 0;font:600 15px var(--sans);color:var(--acc);cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
 .pc .act a{font-size:14px;color:var(--mute);min-height:44px;display:inline-flex;align-items:center}
 .empty{padding:24px;background:var(--soft);color:var(--mute)}
-.out{align-self:start;background:var(--soft);padding:clamp(20px,2.6vw,34px);border-top:4px solid var(--acc)}
+.out{align-self:start;background:var(--soft);padding:clamp(20px,2.6vw,34px)}
 .out .lbl{font-size:14px;color:var(--mute);margin-bottom:6px}
 .out .big{font:500 clamp(32px,3.6vw,48px)/1.05 var(--serif);letter-spacing:-.02em;overflow-wrap:anywhere;margin-bottom:20px;color:var(--acc)}
 .mini{display:flex;justify-content:space-between;gap:16px;padding:10px 0;font-size:16px;color:var(--mute);border-top:1px solid var(--line)}
@@ -214,13 +211,11 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .out .btn{margin-top:16px;width:100%}
 
 /* process */
-.tline{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:3px solid var(--dark);counter-reset:s}
-.tline li{counter-increment:s;padding:22px 22px 6px 0;position:relative}
-.tline li:before{content:counter(s,decimal-leading-zero);display:block;font:500 34px/1 var(--serif);color:var(--acc);margin-bottom:12px}
-.tline li:after{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;background:#fff;border:3px solid var(--acc);border-radius:50%}
+.tline{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0 28px}
+.tline li{padding:18px 0 6px;border-top:1px solid var(--ink)}
 .tline h3{font-size:20px;margin-bottom:6px}
 .tline p{margin:0;color:var(--mute);font-size:15px}
-.tline .pay{display:inline-block;margin-top:10px;font:600 13px var(--sans);color:var(--acc);border:1px solid var(--acc);padding:3px 8px;border-radius:2px}
+.tline .pay{display:block;margin-top:10px;font:600 15px var(--sans);color:var(--ink)}
 .ways{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin-top:44px}
 .ways div{padding:14px 0;border-top:1px solid var(--line)}
 .ways b{display:block;font-weight:600}
@@ -234,7 +229,7 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .rv{display:block;text-decoration:none;color:#eceee9}
 .rv .im{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:#333}
 .rv img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.rv:hover img{transform:scale(1.04)}
+.rv:hover b{text-decoration:underline}
 .rv .pl{position:absolute;left:14px;bottom:14px;width:46px;height:46px;background:rgba(16,20,18,.7);border:2px solid #fff;display:flex;align-items:center;justify-content:center;border-radius:2px}
 .rv .pl svg{width:16px;height:16px;fill:#fff}
 .rv b{display:block;font-weight:600;margin-top:12px}
@@ -261,8 +256,7 @@ nav.main a:hover{border-bottom-color:var(--acc)}
 .kv dt{color:var(--mute);font-size:15px}
 .kv dd{font-weight:500;overflow-wrap:anywhere}
 .kv dt:last-of-type,.kv dd:last-of-type{border-bottom:0}
-.badge{display:inline-block;background:var(--acc);color:#fff;font:600 12px var(--sans);padding:3px 9px;margin-left:8px;vertical-align:2px;border-radius:2px}
-.wty{background:#fff;border:1px solid var(--line);border-top:4px solid var(--acc);padding:clamp(20px,2.6vw,32px);align-self:start}
+.wty{background:#fff;border:1px solid var(--line);padding:clamp(20px,2.6vw,32px);align-self:start}
 .wty h3{font-size:clamp(22px,2vw,28px);margin-bottom:12px}
 .wty ul{margin:0 0 14px;padding-left:20px;line-height:1.7}
 
@@ -285,8 +279,8 @@ details p{margin:0;padding:0 0 20px;color:var(--mute);max-width:66ch}
 .cl small{color:var(--mute);font-size:14px}
 .cl a{font-size:19px;font-weight:600;overflow-wrap:anywhere;display:inline-block;padding:4px 0;text-underline-offset:4px}
 .soc{display:flex;gap:6px 22px;flex-wrap:wrap}
-.cgrid form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid var(--line);border-top:4px solid var(--acc)}
-.demo-note{background:var(--soft);border-left:4px solid var(--acc);padding:12px 16px;font-size:15px;margin-bottom:24px}
+.cgrid form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid var(--line)}
+.demo-note{background:var(--soft);padding:12px 16px;font-size:15px;margin-bottom:24px}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
 form .field textarea{min-height:100px;resize:vertical}
 .more-f{border:0;margin:0 0 14px}
@@ -336,10 +330,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   nav.main.open a{padding:16px 0;font:500 24px var(--serif);border-bottom:1px solid var(--line);white-space:normal}
   header.top{--hh:72px}
   .logo img{height:44px}
-  .tline{grid-template-columns:1fr;border-top:0;border-left:3px solid var(--dark);margin-left:6px}
-  .tline li{padding:0 0 26px 30px}
-  .tline li:after{top:4px;left:-8px}
-  .tline li:before{font-size:28px;margin-bottom:6px}
+  .tline{grid-template-columns:1fr 1fr}
   .res{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:860px){
@@ -374,9 +365,6 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   .kv dt{border-bottom:0;padding-bottom:0}
   .res{grid-template-columns:1fr}
   .rgrid{grid-template-columns:1fr}
-  .facts{grid-template-columns:1fr 1fr}
-  .f{padding:18px 14px}
-  .f:nth-child(odd){padding-left:0}
 }
 @media (max-width:520px){
   .hright .reg{display:none}
@@ -387,7 +375,6 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   .logo img{height:36px}
   .btn.sm{font-size:14px;padding:9px 12px}
   .hero h1{font-size:32px}
-  .f dd{font-size:26px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -403,7 +390,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
 
 <header class="top">
   <div class="hrow">
-    <a class="logo" href="#top" aria-label="ЭКОСТИЛЬ, наверх"><img src="assets/logo-dark.svg" alt="ЭКОСТИЛЬ — дома и бани из дерева" width="79" height="52"></a>
+    <a class="logo" href="#top" aria-label="ЭКОСТИЛЬ, наверх"><img src="assets/logo-dark.svg" alt="ЭКОСТИЛЬ, дома и бани из дерева" width="79" height="52"></a>
     <nav class="main" id="nav" aria-label="Разделы">
       <a href="#frame">Каркасные дома</a>
       <a href="#glulam">Клееный брус</a>
@@ -442,7 +429,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   </video>
   <div class="hero-in">
     <h1 id="h1">Каркасные дома, дома из клееного бруса и бани под ключ</h1>
-    <p class="sub">Производство в Пестово Новгородской области, офисы в Петербурге и Москве. Без предоплаты: первый платёж — после разгрузки материала на вашем участке.</p>
+    <p class="sub">Производство в Пестово Новгородской области, офисы в Петербурге и Москве. Без предоплаты: первый платёж после разгрузки материала на вашем участке.</p>
     <div class="ctas">
       <a class="btn pri" href="#tools">Подобрать проект и цену</a>
       <a class="btn ghw" id="hcall" href="tel:+79626847870">Позвонить</a>
@@ -471,12 +458,12 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
       <h2 id="ih">Своё производство и лес, цена в договоре не меняется</h2>
       <p class="lead">ООО «ЭКОСТИЛЬ» строит дома и бани из дерева по 175 проектам каталога или по вашему проекту. Материал готовят и комплектуют на собственном производстве в Пестово, стоимость фиксируют в рублях при подписании договора.</p>
     </div>
-    <dl class="facts rv-in">
-      <div class="f"><dt>Предоплаты нет: первый платёж — после разгрузки материала на участке</dt><dd>0 ₽</dd></div>
-      <div class="f"><dt>Доставка и сборка в пределах 500 км от Пестово уже в цене дома</dt><dd>500 км</dd></div>
-      <div class="f"><dt>Гарантия на отделку, кровлю и целостность конструкции</dt><dd>1–3 года</dd></div>
-      <div class="f"><dt>Проектов в каталоге: 123 дома и 52 бани (+ 14 мобильных бань)</dt><dd>175</dd></div>
-    </dl>
+    <ul class="facts rv-in">
+      <li><b>Без предоплаты.</b> Первый платёж вносят после разгрузки материала на участке.</li>
+      <li><b>Доставка в цене.</b> До 500 км от Пестово везут бесплатно, дальше 140 ₽ за километр.</li>
+      <li><b>Гарантия от 1 до 3 лет</b> на отделку, кровлю и целостность конструкции.</li>
+      <li><b>175 проектов в каталоге:</b> 123 дома, 52 бани и ещё 14 мобильных бань.</li>
+    </ul>
   </div>
 </section>
 
@@ -552,7 +539,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
           <div class="field"><label for="area">Площадь: <span class="val" id="areav"></span></label><input type="range" id="area" min="12" max="178" step="2"></div>
           <div class="field" id="bedf"><label for="bed">Спальни</label><select id="bed"><option value="0">Не важно</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4 и больше</option></select></div>
           <div class="field"><label for="sort">Сначала</label><select id="sort"><option value="near">ближе по площади</option><option value="cheap">дешевле</option></select></div>
-          <p class="src">Минимальные цены проектов из каталога ecostyl.ru (каркасные дома, клееный брус, бани), 05.11.2026. Без фундамента и коммуникаций. Картинки — визуализации проектов с сайта компании.</p>
+          <p class="src">Минимальные цены проектов из каталога ecostyl.ru (каркасные дома, клееный брус, бани), 05.11.2026. Без фундамента и коммуникаций. Картинки: визуализации проектов с сайта компании.</p>
         </div>
         <div>
           <div class="sum" id="psum" aria-live="polite"></div>
@@ -594,10 +581,10 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
       <p class="lead">Пять шагов из раздела «Как заказать». Платите по факту выполненной работы, а не вперёд.</p>
     </div>
     <ol class="tline rv-in">
-      <li><h3>Договор</h3><p>В офисе в Москве, Петербурге или Пестово. Можно удалённо: оригиналы привезут вместе с материалом.</p><span class="pay">0 ₽</span></li>
-      <li><h3>Бригада и материалы</h3><p>На участок приезжают бригада и весь комплект материалов.</p><span class="pay">65% после разгрузки</span></li>
-      <li><h3>Строительство</h3><p>Сборка дома на вашем фундаменте, кровля, внутренняя отделка.</p><span class="pay">15% после стропил</span></li>
-      <li><h3>Приёмка</h3><p>Принимаете дом и подписываете акт приёма-передачи.</p><span class="pay">20% после акта</span></li>
+      <li><h3>Договор</h3><p>В офисе в Москве, Петербурге или Пестово. Можно удалённо: оригиналы привезут вместе с материалом.</p><span class="pay">Оплата: 0 ₽</span></li>
+      <li><h3>Бригада и материалы</h3><p>На участок приезжают бригада и весь комплект материалов.</p><span class="pay">Оплата: 65% после разгрузки</span></li>
+      <li><h3>Строительство</h3><p>Сборка дома на вашем фундаменте, кровля, внутренняя отделка.</p><span class="pay">Оплата: 15% после стропил</span></li>
+      <li><h3>Приёмка</h3><p>Принимаете дом и подписываете акт приёма-передачи.</p><span class="pay">Оплата: 20% после акта</span></li>
       <li><h3>Гарантия</h3><p>Начинает действовать гарантия на отделку, кровлю и конструкцию.</p></li>
     </ol>
     <div class="ways rv-in">
@@ -633,7 +620,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
       </ul>
     </div>
     <div class="mapbox rv-in" id="mapbox">
-      <p>Карта Северо-Запада и Центра, метка — производство в Пестово. Офисы — по ссылкам «На карте» слева. Карта загружается с OpenStreetMap только по нажатию.</p>
+      <p>Карта Северо-Запада и Центра, метка показывает производство в Пестово. Офисы смотрите по ссылкам «На карте» слева. Карта загружается с OpenStreetMap только по нажатию.</p>
       <button type="button" class="btn" id="mapb">Показать карту</button>
     </div>
   </div>
@@ -645,7 +632,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
       <h2 id="coh">О компании</h2>
       <p class="lead">Своя сырьевая база, штатные бригады и работа напрямую, без посредников. Весь пакет документов по договору.</p>
       <dl class="kv">
-        <dt>Компания</dt><dd>ООО «ЭКОСТИЛЬ» <span class="badge">ДЕЙСТВУЮЩЕЕ</span></dd>
+        <dt>Компания</dt><dd>ООО «ЭКОСТИЛЬ», действующее</dd>
         <dt>ОГРН</dt><dd>1235300000650</dd>
         <dt>ИНН / КПП</dt><dd>5300007670 / 530001001</dd>
         <dt>Регистрация</dt><dd>16.02.2023, Новгородская область</dd>
@@ -670,11 +657,11 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   <div class="wrap fwrap">
     <h2 id="qh">Частые вопросы</h2>
     <details><summary>Что входит в стоимость дома?</summary><p>Материалы и доставка до 500 км от производства в Пестово, погрузка и разгрузка, сборка на участке. Дом сдаётся с внутренней отделкой, но без коммуникаций (электрика, вода, септик). Фундамент считается отдельно.</p></details>
-    <details><summary>Нужна ли предоплата?</summary><p>Нет. Можно зафиксировать цену и встать в очередь на строительство, ничего не внося. Первый платёж, 65%, — после разгрузки материала на участке; при безналичной оплате — минимум за два дня до отгрузки.</p></details>
+    <details><summary>Нужна ли предоплата?</summary><p>Нет. Можно зафиксировать цену и встать в очередь на строительство, ничего не внося. Первый платёж, 65%, вносят после разгрузки материала на участке. При безналичной оплате его вносят минимум за два дня до отгрузки.</p></details>
     <details><summary>Кто собирает дом?</summary><p>Штатные бригады компании по 2–3 человека из Северо-Западного региона.</p></details>
     <details><summary>Можно ли построить по своему проекту?</summary><p>Да. Проекты каталога можно менять под себя, можно принести свой. Стоимость считают по расходу материалов и объёму работ, расчёт бесплатный.</p></details>
     <details><summary>Сколько стоит доставка далеко от Москвы и Петербурга?</summary><p>До 500 км от Пестово бесплатно, дальше 140 ₽ за километр. Точную сумму подскажет менеджер.</p></details>
-    <details><summary>Сколько прослужит каркасный дом?</summary><p>По данным компании, в среднем 50 лет. Главное — чтобы внутрь не попадала влага и не копился конденсат.</p></details>
+    <details><summary>Сколько прослужит каркасный дом?</summary><p>По данным компании, в среднем 50 лет. Главное, чтобы внутрь не попадала влага и не копился конденсат.</p></details>
     <details><summary>Как заключить договор, если я в другом городе?</summary><p>Документы согласуют удалённо, а оригиналы привезут вместе с материалом на участок. Либо приезжайте в офис в Москве, Петербурге или Пестово.</p></details>
   </div>
 </section>
@@ -718,7 +705,7 @@ dialog#lb::backdrop{background:rgba(16,18,17,.95)}
   <div class="wrap fg">
     <div><img src="assets/logo.svg" alt="ЭКОСТИЛЬ" width="98" height="64"><p>Каркасные дома, дома из клееного бруса и бани под ключ. Производство в Пестово, офисы в Петербурге и Москве.</p><p>ООО «ЭКОСТИЛЬ», ОГРН 1235300000650</p></div>
     <div><b>Связь</b><p><a href="tel:+79626847870">+7 (962) 684-78-70</a> СПб</p><p><a href="tel:+79934401608">+7 (993) 440-16-08</a> Москва</p><p><a href="mailto:spb@ecostyl.ru">spb@ecostyl.ru</a></p><p><a href="mailto:msk@ecostyl.ru">msk@ecostyl.ru</a></p></div>
-    <div><b>Об этом демо</b><p>Данные, фото объектов и цены — с ecostyl.ru (05.11.2026). Видео на первом экране — стоковое (Mixkit), не объекты компании. Без cookies, счётчиков и аналитики.</p></div>
+    <div><b>Об этом демо</b><p>Данные, фото объектов и цены взяты с ecostyl.ru (05.11.2026). Видео на первом экране стоковое (Mixkit), не объекты компании. Без cookies, счётчиков и аналитики.</p></div>
   </div>
   <div class="demo-bar">Демо-концепт, не официальный сайт компании ЭКОСТИЛЬ. <a href="https://ecostyl.ru/" rel="noopener noreferrer">Официальный сайт: ecostyl.ru</a></div>
 </footer>
@@ -858,7 +845,7 @@ function pick(){
   var L=all.filter(function(c){return Math.abs(c[2]-A)<=Math.max(8,A*.2)&&(!B||(B>=4?c[4]>=4:c[4]===B))});
   L.sort(sortS.value==='cheap'?function(a,b){return a[5]-b[5]}:function(a,b){return Math.abs(a[2]-A)-Math.abs(b[2]-A)||a[5]-b[5]});
   var sum=q('#psum'),res=q('#pres');
-  if(!L.length){sum.innerHTML='Под эти условия проектов нет. Измените площадь или число спален — или закажите свой проект, расчёт бесплатный.';res.innerHTML='';return}
+  if(!L.length){sum.innerHTML='Под эти условия проектов нет. Измените площадь или число спален или закажите свой проект, расчёт бесплатный.';res.innerHTML='';return}
   var pr=L.map(function(c){return c[5]}),pm=L.map(function(c){return c[5]/c[2]});
   sum.innerHTML='<b>'+L.length+' '+pl(L.length,'проект','проекта','проектов')+'</b> около '+A+' м²: от '+rub(Math.min.apply(null,pr))+' до '+rub(Math.max.apply(null,pr))+', в среднем '+rub(pm.reduce(function(a,b){return a+b},0)/pm.length)+' за м². Всего в разделе «'+TL[tech]+'»: '+all.length+'.';
   var full={f:'frame',g:'glulam',bp:'bprof',bf:'bframe'}[tech];
