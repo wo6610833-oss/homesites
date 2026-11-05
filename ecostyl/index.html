@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЭКОСТИЛЬ: демо-концепт сайта</title>
+<meta name="description" content="Демо-концепт нового сайта для ЭКОСТИЛЬ: каркасные дома, дома из клееного бруса и бани под ключ, Санкт-Петербург и Москва. Не официальный сайт компании.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-src https://www.openstreetmap.org; connect-src 'none'">
+<meta name="theme-color" content="#1f2321">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preload" href="assets/fonts/serif-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/golos-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/serif-cyr.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Source Serif 4";src:url(assets/fonts/serif-lat.woff2) format("woff2");font-weight:200 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+20BD,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";src:url(assets/fonts/golos-cyr.woff2) format("woff2");font-weight:400 900;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";src:url(assets/fonts/golos-lat.woff2) format("woff2");font-weight:400 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+20BD,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --bg:#ffffff; --soft:#f2f2ef; --ink:#1f2321; --mute:#585d59; --line:#d8d9d4;
+  --acc:#2c5a40; --acc2:#1f4430; --dark:#1f2321;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --gut:clamp(16px,4vw,56px); --max:1320px; --db:48px; --hh:84px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px;-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:var(--acc)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.01em;line-height:1.14}
+h2{font-size:clamp(30px,3.6vw,50px);text-wrap:balance}
+h3{font-size:22px}
+p{margin:0 0 1em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+section{padding:clamp(56px,7vw,104px) 0}
+.skip{position:absolute;left:-999px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:100}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.lead{color:var(--mute);max-width:60ch;font-size:18px;margin-top:16px}
+.small{font-size:14px;color:var(--mute)}
+.tl{color:var(--acc);font-weight:600;text-underline-offset:4px}
+.nobr{white-space:nowrap}
+
+/* demo bar */
+.demo-bar{background:var(--dark);color:#d9dad6;font-size:13px;padding:9px var(--gut);line-height:1.4}
+.demo-bar a{color:#fff;display:inline-block;padding:6px 2px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;gap:18px;min-height:var(--hh);padding:0 var(--gut);max-width:var(--max);margin:0 auto}
+.logo{flex:0 0 auto;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:52px;width:auto}
+nav.main{display:flex;gap:2px;margin-left:clamp(8px,1.4vw,28px)}
+nav.main a{text-decoration:none;font-size:15px;font-weight:500;padding:12px 7px;color:var(--ink);border-bottom:3px solid transparent;transition:border-color .2s;white-space:nowrap}
+nav.main a:hover{border-bottom-color:var(--acc)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phone{font-weight:600;font-size:16px;text-decoration:none;color:var(--ink);white-space:nowrap;display:flex;flex-direction:column;line-height:1.2}
+.phone small{font-weight:400;font-size:12px;color:var(--mute)}
+.reg{display:flex}
+.reg button{border:1px solid var(--line);background:#fff;color:var(--ink);font:600 13px var(--sans);padding:8px 10px;min-height:44px;cursor:pointer;border-radius:2px}
+.reg button+button{margin-left:-1px}
+.reg button[aria-pressed="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.wa{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:2px;color:#1d8a4a}
+.wa:hover{border-color:var(--ink)}
+.wa svg{width:22px;height:22px;fill:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:600 16px var(--sans);padding:13px 26px;cursor:pointer;text-decoration:none;min-height:52px;border-radius:2px;transition:background .2s,color .2s,border-color .2s;text-align:center}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:var(--acc2);border-color:var(--acc2)}
+.btn.ghw{border-color:#fff;color:#fff}
+.btn.ghw:hover{background:#fff;color:var(--ink)}
+.btn.sm{min-height:46px;padding:9px 18px;font-size:15px}
+.navreg{display:none}
+.cwrap{position:relative}
+.cmenu{position:absolute;right:0;top:calc(100% + 10px);width:330px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--acc);padding:6px;display:none;z-index:60;box-shadow:0 14px 30px -14px rgba(31,35,33,.35)}
+.cmenu.open{display:block}
+.cmenu a{display:flex;flex-direction:column;padding:10px 14px;text-decoration:none;color:var(--ink);min-height:50px;justify-content:center}
+.cmenu a:hover,.cmenu a:focus-visible{background:var(--soft)}
+.cmenu small{color:var(--mute);font-size:13px;overflow-wrap:anywhere}
+.cmenu b{font-weight:600;font-size:15px}
+.cmenu hr{border:0;border-top:1px solid var(--line);margin:6px 14px}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);background:#fff;cursor:pointer;padding:0;border-radius:2px}
+.burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px auto;transition:transform .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{position:relative;height:calc(100svh - var(--hh) - var(--db) - 1px);min-height:540px;max-height:880px;padding:0;color:#fff;background:#25302a url(assets/poster.webp) center/cover no-repeat;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(16,20,18,.82) 0%,rgba(16,20,18,.45) 40%,rgba(16,20,18,.08) 72%)}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut) clamp(34px,5vw,64px)}
+.hero h1{font-size:clamp(34px,5.2vw,74px);font-weight:500;line-height:1.06;max-width:14em;text-wrap:balance;letter-spacing:-.02em}
+.hero .sub{font-size:clamp(16px,1.5vw,20px);color:#eef0ec;margin:20px 0 28px;max-width:54ch}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.vctl{position:absolute;right:var(--gut);bottom:clamp(34px,5vw,64px);display:flex;align-items:center;gap:12px;font-size:13px;color:#e4e6e1;z-index:3}
+.vctl button{width:44px;height:44px;border:2px solid rgba(255,255,255,.85);background:rgba(16,20,18,.4);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;border-radius:2px}
+.vctl button:hover{background:rgba(255,255,255,.2)}
+.vctl svg{width:16px;height:16px;fill:#fff}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero .sub,.hero .ctas{opacity:0;transform:translateY(20px);animation:up .9s var(--ease) forwards}
+  .hero h1{animation-delay:.1s}.hero .sub{animation-delay:.3s}.hero .ctas{animation-delay:.45s}
+}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* gallery */
+.work{padding-top:clamp(40px,5vw,72px)}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;margin-bottom:30px;flex-wrap:wrap}
+.work-head .lead{margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink);font:500 14px var(--sans);cursor:pointer;padding:9px 16px;min-height:44px;border-radius:2px}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:#fff}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(20px,2.4vw,32px) clamp(12px,1.6vw,22px)}
+.gi{border:0;padding:0;background:none;text-align:left;cursor:pointer;color:inherit;font:inherit;display:block;grid-column:span 2}
+.gi[hidden]{display:none}
+.gi .ph{display:block;overflow:hidden;background:#dfe0db;aspect-ratio:4/3}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gi:hover img{transform:scale(1.03)}
+.gi .cap{display:block;font-size:14px;color:var(--mute);margin-top:9px;line-height:1.4}
+.gi .cap b{color:var(--ink);font-weight:600}
+@media (min-width:861px){
+  .gi.p0{grid-column:span 4;grid-row:span 2}.gi.p0 .ph{aspect-ratio:auto;height:calc(100% - 32px)}
+  .gi.p1,.gi.p2{grid-column:span 2}
+  .gi.p3,.gi.p4,.gi.p5{grid-column:span 2}
+  .gi.p6{grid-column:span 6}.gi.p6 .ph{aspect-ratio:2.6/1}
+}
+@media (max-width:860px){.gi{grid-column:span 3}.gi.p0{grid-column:span 6}.gi .cap{font-size:13px}}
+.more{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+
+/* intro facts */
+.intro{background:var(--soft)}
+.igrid{display:grid;grid-template-columns:5fr 7fr;gap:40px clamp(40px,6vw,100px);align-items:start}
+.facts{margin:0;display:grid;grid-template-columns:1fr 1fr}
+.f{margin:0;padding:22px 24px;border-left:1px solid var(--line);display:flex;flex-direction:column}
+.f:nth-child(odd){border-left:0;padding-left:0}
+.f:nth-child(n+3){border-top:1px solid var(--line)}
+.f dd{margin:0 0 6px;font:500 clamp(28px,3vw,42px)/1.05 var(--serif);color:var(--acc);letter-spacing:-.02em;order:1}
+.f dt{font-size:15px;color:var(--mute);line-height:1.45;order:2;max-width:32ch}
+
+/* services */
+.sv{border-top:1px solid var(--line)}
+.sv:first-of-type{border-top:0}
+.hgrid{display:grid;grid-template-columns:6fr 5fr;gap:40px clamp(40px,6vw,100px);align-items:center}
+.hgrid.rev{grid-template-columns:5fr 6fr}
+.hgrid.rev .hfig{order:2}
+.hfig{margin:0;aspect-ratio:5/4;overflow:hidden;background:#dfe0db}
+.hfig img{width:100%;height:100%;object-fit:cover}
+.htext h2{margin-bottom:18px}
+.price{font:500 clamp(24px,2.4vw,32px)/1.2 var(--serif);margin:0 0 6px}
+.price small{display:block;font:400 14px/1.5 var(--sans);color:var(--mute);margin-top:4px}
+.kl{list-style:none;margin:22px 0 26px;padding:0}
+.kl li{padding:10px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:16px}
+.kl li span:last-child{color:var(--mute);text-align:right}
+.kl li:last-child{border-bottom:1px solid var(--line)}
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:clamp(40px,5vw,64px);padding-top:30px;border-top:3px solid var(--dark)}
+.inc h3{margin-bottom:10px}
+.inc ul{margin:0;padding-left:20px;color:var(--mute)}
+.inc li{margin-bottom:6px}
+
+/* tools */
+.tools{background:var(--soft)}
+.head{margin-bottom:34px;max-width:780px}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:3px solid var(--dark)}
+.tab{border:1px solid var(--line);border-bottom:0;background:#fff;color:var(--ink);padding:14px 22px;font:600 16px var(--sans);cursor:pointer;min-height:50px;border-radius:2px 2px 0 0;margin-right:4px}
+.tab:hover{background:#fafaf8}
+.tab[aria-selected="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.panel{padding:clamp(20px,3vw,40px);background:#fff;border:1px solid var(--line);border-top:0}
+.panel[hidden]{display:none}
+.pk{display:grid;grid-template-columns:320px 1fr;gap:clamp(24px,4vw,56px)}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+.panel h3{font-size:clamp(22px,2.1vw,28px);margin-bottom:10px}
+.note{font-size:14px;color:var(--mute);margin:12px 0}
+.src{font-size:13px;color:var(--mute);line-height:1.5;margin-top:16px}
+.src a{color:var(--acc)}
+.field{margin-bottom:18px}
+.field>label,.field .lbl{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.field input[type=number],.field select,.field input[type=text],.field input[type=tel],.field textarea{width:100%;font:17px var(--sans);padding:11px 13px;border:1px solid #8a8d89;background:#fff;color:var(--ink);border-radius:2px;min-height:48px}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{outline:3px solid var(--acc);outline-offset:1px}
+.field input[type=range]{width:100%;accent-color:var(--acc);min-height:32px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1px solid var(--line);background:#fff;font:500 14px var(--sans);color:var(--ink);padding:9px 12px;min-height:44px;cursor:pointer;border-radius:2px}
+.seg button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.val{font:500 26px var(--serif);color:var(--acc)}
+.sum{background:var(--soft);padding:14px 16px;border-left:4px solid var(--acc);font-size:15px;margin-bottom:18px}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pc{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.pc:hover{transform:translateY(-3px);box-shadow:0 14px 24px -18px rgba(0,0,0,.45)}
+.pc .im{aspect-ratio:521/420;background:#e6e7e2;overflow:hidden}
+.pc .im img{width:100%;height:100%;object-fit:cover}
+.pc .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pc .nm{font:600 15px var(--sans)}
+.pc .sp{font-size:14px;color:var(--mute)}
+.pc .pr{font:500 22px var(--serif);margin-top:6px}
+.pc .pm{font-size:13px;color:var(--mute)}
+.pc .act{display:flex;gap:8px 16px;flex-wrap:wrap;align-items:center;margin-top:auto;padding-top:10px}
+.pc .act button{border:0;background:none;padding:8px 0;font:600 15px var(--sans);color:var(--acc);cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.pc .act a{font-size:14px;color:var(--mute);min-height:44px;display:inline-flex;align-items:center}
+.empty{padding:24px;background:var(--soft);color:var(--mute)}
+.out{align-self:start;background:var(--soft);padding:clamp(20px,2.6vw,34px);border-top:4px solid var(--acc)}
+.out .lbl{font-size:14px;color:var(--mute);margin-bottom:6px}
+.out .big{font:500 clamp(32px,3.6vw,48px)/1.05 var(--serif);letter-spacing:-.02em;overflow-wrap:anywhere;margin-bottom:20px;color:var(--acc)}
+.mini{display:flex;justify-content:space-between;gap:16px;padding:10px 0;font-size:16px;color:var(--mute);border-top:1px solid var(--line)}
+.mini span:last-child{color:var(--ink);text-align:right;font-weight:600;white-space:nowrap}
+.stages{display:flex;height:10px;margin:4px 0 18px}
+.stages i{display:block;height:100%}
+.stages i:nth-child(1){background:var(--acc);width:65%}
+.stages i:nth-child(2){background:#6f9a7f;width:15%}
+.stages i:nth-child(3){background:#b5c9bb;width:20%}
+.out .btn{margin-top:16px;width:100%}
+
+/* process */
+.tline{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:3px solid var(--dark);counter-reset:s}
+.tline li{counter-increment:s;padding:22px 22px 6px 0;position:relative}
+.tline li:before{content:counter(s,decimal-leading-zero);display:block;font:500 34px/1 var(--serif);color:var(--acc);margin-bottom:12px}
+.tline li:after{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;background:#fff;border:3px solid var(--acc);border-radius:50%}
+.tline h3{font-size:20px;margin-bottom:6px}
+.tline p{margin:0;color:var(--mute);font-size:15px}
+.tline .pay{display:inline-block;margin-top:10px;font:600 13px var(--sans);color:var(--acc);border:1px solid var(--acc);padding:3px 8px;border-radius:2px}
+.ways{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin-top:44px}
+.ways div{padding:14px 0;border-top:1px solid var(--line)}
+.ways b{display:block;font-weight:600}
+.ways span{color:var(--mute);font-size:15px}
+
+/* reviews */
+.revs{background:var(--dark);color:#eceee9}
+.revs h2{color:#fff}
+.revs .lead{color:#b9bdb7}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px;margin-top:36px}
+.rv{display:block;text-decoration:none;color:#eceee9}
+.rv .im{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:#333}
+.rv img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.rv:hover img{transform:scale(1.04)}
+.rv .pl{position:absolute;left:14px;bottom:14px;width:46px;height:46px;background:rgba(16,20,18,.7);border:2px solid #fff;display:flex;align-items:center;justify-content:center;border-radius:2px}
+.rv .pl svg{width:16px;height:16px;fill:#fff}
+.rv b{display:block;font-weight:600;margin-top:12px}
+.rv small{color:#b9bdb7}
+.revs .tl{color:#fff}
+
+/* area */
+.agrid{display:grid;grid-template-columns:5fr 7fr;gap:44px clamp(30px,5vw,80px);align-items:start}
+.offs{list-style:none;margin:26px 0 0;padding:0}
+.offs li{padding:16px 0;border-top:1px solid var(--line)}
+.offs b{display:block;font-weight:600;font-size:17px}
+.offs span{display:block;color:var(--mute);font-size:15px}
+.offs a{font-size:15px;font-weight:600;display:inline-block;padding:6px 0;margin-right:16px}
+.mapbox{background:var(--soft);min-height:420px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border:1px solid var(--line);overflow:hidden;flex-direction:column;gap:14px}
+.mapbox p{color:var(--mute);margin:0;max-width:44ch}
+.mapbox iframe{width:100%;height:440px;border:0;display:block}
+.mapbox.on{padding:0}
+
+/* company */
+.co{background:var(--soft)}
+.cogrid{display:grid;grid-template-columns:7fr 5fr;gap:44px clamp(40px,6vw,100px)}
+.kv{display:grid;grid-template-columns:auto 1fr;margin:26px 0 0;background:#fff;border:1px solid var(--line)}
+.kv dt,.kv dd{padding:12px 16px;border-bottom:1px solid var(--line);margin:0}
+.kv dt{color:var(--mute);font-size:15px}
+.kv dd{font-weight:500;overflow-wrap:anywhere}
+.kv dt:last-of-type,.kv dd:last-of-type{border-bottom:0}
+.badge{display:inline-block;background:var(--acc);color:#fff;font:600 12px var(--sans);padding:3px 9px;margin-left:8px;vertical-align:2px;border-radius:2px}
+.wty{background:#fff;border:1px solid var(--line);border-top:4px solid var(--acc);padding:clamp(20px,2.6vw,32px);align-self:start}
+.wty h3{font-size:clamp(22px,2vw,28px);margin-bottom:12px}
+.wty ul{margin:0 0 14px;padding-left:20px;line-height:1.7}
+
+/* faq */
+.fwrap{max-width:900px}
+.fwrap h2{margin-bottom:28px}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:3px solid var(--dark)}
+summary{cursor:pointer;padding:18px 0;font:500 clamp(17px,1.6vw,20px) var(--sans);list-style:none;display:flex;justify-content:space-between;gap:20px;min-height:60px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:400 28px var(--sans);flex:none;color:var(--acc);transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0;padding:0 0 20px;color:var(--mute);max-width:66ch}
+
+/* contact */
+.est-s{background:var(--soft)}
+.cgrid{display:grid;grid-template-columns:5fr 6fr;gap:44px clamp(40px,6vw,100px);align-items:start}
+.cl{list-style:none;padding:0;margin:26px 0 0}
+.cl li{padding:12px 0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.cl small{color:var(--mute);font-size:14px}
+.cl a{font-size:19px;font-weight:600;overflow-wrap:anywhere;display:inline-block;padding:4px 0;text-underline-offset:4px}
+.soc{display:flex;gap:6px 22px;flex-wrap:wrap}
+.cgrid form{background:#fff;padding:clamp(20px,3vw,40px);border:1px solid var(--line);border-top:4px solid var(--acc)}
+.demo-note{background:var(--soft);border-left:4px solid var(--acc);padding:12px 16px;font-size:15px;margin-bottom:24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+form .field textarea{min-height:100px;resize:vertical}
+.more-f{border:0;margin:0 0 14px}
+.more-f:first-of-type{border-top:0}
+.more-f summary{font:600 16px var(--sans);color:var(--acc);min-height:48px;padding:8px 0}
+.more-f[open] summary{margin-bottom:8px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--mute);margin:4px 0 18px}
+.chk input{width:22px;height:22px;flex:none;accent-color:var(--acc);margin-top:1px}
+.err{color:#a3271a;font-size:14px;margin:0 0 12px;display:none}
+.err.show{display:block}
+.sent{display:none;margin-top:20px;border:1px solid var(--acc);padding:16px;font-size:15px}
+.sent.show{display:block}
+.sent ul{margin:8px 0 0;padding-left:18px}
+form .btn{width:100%;min-height:56px}
+
+footer{background:var(--dark);color:#c8cbc6;padding:clamp(44px,6vw,76px) 0 0;font-size:15px}
+footer .fg{display:grid;grid-template-columns:5fr 3fr 4fr;gap:34px var(--gut)}
+footer img{height:64px;width:auto;margin-bottom:16px}
+footer b{color:#fff;display:block;margin-bottom:10px}
+footer a{color:#fff}
+footer p{margin:0 0 8px}
+footer .demo-bar{max-width:var(--max);margin:44px auto 0;padding:16px var(--gut) 22px;border-top:1px solid #444a46;color:#aeb2ac;background:none}
+
+/* lightbox */
+dialog#lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+dialog#lb::backdrop{background:rgba(16,18,17,.95)}
+.lbin{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 12px 20px}
+.lbin img{max-width:min(1280px,96vw);max-height:calc(100vh - 160px);width:auto;height:auto;object-fit:contain}
+.lbcap{margin-top:14px;font-size:15px;text-align:center;max-width:720px;color:#e0e2de}
+.lbcap a{color:#fff}
+.lbbtn{position:absolute;width:48px;height:48px;border:2px solid rgba(255,255,255,.8);background:rgba(16,18,17,.7);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;border-radius:2px}
+.lbbtn.close{top:14px;right:14px}.lbbtn.prev{left:14px;top:50%;transform:translateY(-50%)}.lbbtn.next{right:14px;top:50%;transform:translateY(-50%)}
+
+.bbar{display:none}
+
+/* motion */
+.js .rv-in{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv-in.in{opacity:1;transform:none}
+
+@media (max-width:1240px){
+  .phone{display:none}
+}
+@media (max-width:1100px){
+  nav.main{display:none}
+  .burger{display:block}
+  nav.main.open{display:flex;position:absolute;left:0;right:0;top:100%;height:calc(100svh - var(--hh));background:#fff;flex-direction:column;gap:0;margin:0;padding:8px var(--gut) 100px;overflow:auto;border-top:1px solid var(--line)}
+  nav.main.open a{padding:16px 0;font:500 24px var(--serif);border-bottom:1px solid var(--line);white-space:normal}
+  header.top{--hh:72px}
+  .logo img{height:44px}
+  .tline{grid-template-columns:1fr;border-top:0;border-left:3px solid var(--dark);margin-left:6px}
+  .tline li{padding:0 0 26px 30px}
+  .tline li:after{top:4px;left:-8px}
+  .tline li:before{font-size:28px;margin-bottom:6px}
+  .res{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:860px){
+  .igrid,.hgrid,.hgrid.rev,.calc,.pk,.agrid,.cogrid,.cgrid,footer .fg,.inc{grid-template-columns:1fr}
+  .hgrid.rev .hfig{order:0}
+  .hfig{aspect-ratio:4/3}
+  .frow{grid-template-columns:1fr}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .ways{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  body{padding-bottom:74px;font-size:16px}
+  .hero{height:calc(100svh - 210px);min-height:500px}
+  .vctl{top:12px;bottom:auto;right:12px;font-size:12px;gap:8px}
+  .vctl span{background:rgba(16,20,18,.45);padding:3px 7px}
+  .hero .btn.ghw{display:none}
+  .hrow{gap:8px}
+  .hright{gap:6px}
+  .logo img{height:40px}
+  .reg button{padding:8px 8px}
+  .bbar{display:grid;grid-template-columns:1fr 1fr 1.25fr;position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}
+  .bbar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:50px;color:var(--ink);text-decoration:none;font:600 15px var(--sans);border:2px solid var(--ink);border-radius:2px}
+  .bbar a.est{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .cwrap{position:static}.cmenu{position:absolute;left:10px;right:10px;width:auto;top:calc(100% + 4px);max-height:calc(100svh - var(--hh) - 96px);overflow:auto}
+  .tabs{flex-wrap:nowrap}
+  .tab{flex:1 1 0;padding:10px 8px;font-size:14px;line-height:1.25;margin-right:3px}
+  .tab:last-child{margin-right:0}
+  .more .tl{display:inline-block;padding:10px 0}
+  footer a{display:inline-block;padding:8px 0}
+  .offs a{padding:10px 0}
+  .kv{grid-template-columns:1fr}
+  .kv dt{border-bottom:0;padding-bottom:0}
+  .res{grid-template-columns:1fr}
+  .rgrid{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .f{padding:18px 14px}
+  .f:nth-child(odd){padding-left:0}
+}
+@media (max-width:520px){
+  .hright .reg{display:none}
+  nav.main.open .navreg{display:flex;margin-top:22px}
+  .wa{display:none}
+}
+@media (max-width:400px){
+  .logo img{height:36px}
+  .btn.sm{font-size:14px;padding:9px 12px}
+  .hero h1{font-size:32px}
+  .f dd{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .js .rv-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<div class="demo-bar" role="note">Демо-концепт, не официальный сайт компании ЭКОСТИЛЬ. <a href="https://ecostyl.ru/" rel="noopener noreferrer">Официальный сайт: ecostyl.ru</a></div>
+
+<header class="top">
+  <div class="hrow">
+    <a class="logo" href="#top" aria-label="ЭКОСТИЛЬ, наверх"><img src="assets/logo-dark.svg" alt="ЭКОСТИЛЬ — дома и бани из дерева" width="79" height="52"></a>
+    <nav class="main" id="nav" aria-label="Разделы">
+      <a href="#frame">Каркасные дома</a>
+      <a href="#glulam">Клееный брус</a>
+      <a href="#bani">Бани</a>
+      <a href="#work">Наши дома</a>
+      <a href="#tools">Подбор и расчёт</a>
+      <a href="#company">О компании</a>
+      <div class="reg navreg" role="group" aria-label="Регион"><button type="button" data-reg="spb" aria-pressed="true">Петербург</button><button type="button" data-reg="msk" aria-pressed="false">Москва</button></div>
+    </nav>
+    <div class="hright">
+      <a class="phone" id="hphone" href="tel:+79626847870"><span data-ph>+7 (962) 684-78-70</span><small data-phl>Петербург и Ленобласть</small></a>
+      <div class="reg" role="group" aria-label="Регион"><button type="button" data-reg="spb" aria-pressed="true">СПб</button><button type="button" data-reg="msk" aria-pressed="false">Москва</button></div>
+      <a class="wa" href="https://wa.me/79626847870" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.6 2.5 3.9 3.5 1.5.6 2 .7 2.7.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg></a>
+      <div class="cwrap">
+        <button type="button" class="btn pri sm" id="cbtn" aria-expanded="false" aria-controls="cmenu">Связаться</button>
+        <div class="cmenu" id="cmenu" role="group" aria-label="Способы связи">
+          <div id="cm-phones"></div>
+          <hr>
+          <a href="https://wa.me/79626847870" target="_blank" rel="noopener noreferrer"><b>WhatsApp</b><small>+7 (962) 684-78-70</small></a>
+          <a href="https://t.me/SPB_ECOSTYL" target="_blank" rel="noopener noreferrer"><b>Telegram</b><small>@SPB_ECOSTYL</small></a>
+          <a href="https://vk.me/club219186648" target="_blank" rel="noopener noreferrer"><b>Сообщение ВКонтакте</b><small>vk.com/club219186648</small></a>
+          <a id="cm-mail" href="mailto:spb@ecostyl.ru"><b>Почта</b><small>spb@ecostyl.ru</small></a>
+          <hr>
+          <a href="#estimate" data-close="1"><b>Заявка на расчёт</b><small>Форма внизу страницы</small></a>
+        </div>
+      </div>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="h1">
+  <video id="hv" muted loop playsinline preload="metadata" poster="assets/poster.webp" aria-hidden="true" tabindex="-1">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-in">
+    <h1 id="h1">Каркасные дома, дома из клееного бруса и бани под ключ</h1>
+    <p class="sub">Производство в Пестово Новгородской области, офисы в Петербурге и Москве. Без предоплаты: первый платёж — после разгрузки материала на вашем участке.</p>
+    <div class="ctas">
+      <a class="btn pri" href="#tools">Подобрать проект и цену</a>
+      <a class="btn ghw" id="hcall" href="tel:+79626847870">Позвонить</a>
+    </div>
+  </div>
+  <div class="vctl"><span>Стоковое видео, не объекты компании</span><button type="button" id="vbtn" aria-label="Остановить видео"><svg viewBox="0 0 16 16" id="vico" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg></button></div>
+</section>
+
+<section class="work" id="work" aria-labelledby="wh">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <h2 id="wh">Сданные дома и бани</h2>
+        <p class="lead">Фото с участков из раздела «Отчёты» на ecostyl.ru. Нажмите на фото, чтобы открыть его крупно.</p>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Фильтр по типу"></div>
+    </div>
+    <div class="gal" id="gal"></div>
+    <div class="more"><button type="button" class="btn" id="moreb"></button><a class="tl" href="https://ecostyl.ru/otchety" rel="noopener noreferrer">Все 62 отчёта со стройки на ecostyl.ru</a></div>
+  </div>
+</section>
+
+<section class="intro" aria-labelledby="ih">
+  <div class="wrap igrid">
+    <div class="rv-in">
+      <h2 id="ih">Своё производство и лес, цена в договоре не меняется</h2>
+      <p class="lead">ООО «ЭКОСТИЛЬ» строит дома и бани из дерева по 175 проектам каталога или по вашему проекту. Материал готовят и комплектуют на собственном производстве в Пестово, стоимость фиксируют в рублях при подписании договора.</p>
+    </div>
+    <dl class="facts rv-in">
+      <div class="f"><dt>Предоплаты нет: первый платёж — после разгрузки материала на участке</dt><dd>0 ₽</dd></div>
+      <div class="f"><dt>Доставка и сборка в пределах 500 км от Пестово уже в цене дома</dt><dd>500 км</dd></div>
+      <div class="f"><dt>Гарантия на отделку, кровлю и целостность конструкции</dt><dd>1–3 года</dd></div>
+      <div class="f"><dt>Проектов в каталоге: 123 дома и 52 бани (+ 14 мобильных бань)</dt><dd>175</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sv" id="frame" aria-labelledby="fh">
+  <div class="wrap hgrid">
+    <figure class="hfig rv-in"><img src="assets/g/45.webp" alt="Сданный каркасный дом 16,7×9,7 м с панорамными окнами" loading="lazy" width="1280" height="960"></figure>
+    <div class="htext rv-in">
+      <h2 id="fh">Каркасные дома</h2>
+      <p class="price">от 1 411 000 ₽<small>минимальная цена в каталоге из 62 проектов, 56–178 м²</small></p>
+      <ul class="kl">
+        <li><span>Этажность</span><span>1 этаж, с мансардой, 1,5 и 2 этажа</span></li>
+        <li><span>Планировки</span><span>с террасой, вторым светом, котельной, сауной</span></li>
+        <li><span>Срок службы</span><span>в среднем 50 лет, по данным компании</span></li>
+      </ul>
+      <a class="btn pri" href="#tools" data-tech="f">Подобрать каркасный дом</a>
+    </div>
+  </div>
+</section>
+
+<section class="sv" id="glulam" aria-labelledby="gh">
+  <div class="wrap hgrid rev">
+    <figure class="hfig rv-in"><img src="assets/g/46.webp" alt="Сданный дом 9,5×9 м из клееного бруса" loading="lazy" width="1280" height="960"></figure>
+    <div class="htext rv-in">
+      <h2 id="gh">Дома из клееного бруса</h2>
+      <p class="price">от 3 030 000 ₽<small>минимальная цена в каталоге из 61 проекта, 56–178 м²</small></p>
+      <ul class="kl">
+        <li><span>Те же планировки</span><span>что у каркасных домов: можно сравнить цену</span></li>
+        <li><span>Изменения в проекте</span><span>возможны и после подписания договора</span></li>
+        <li><span>Свой проект</span><span>строим и по проекту заказчика, расчёт бесплатный</span></li>
+      </ul>
+      <a class="btn pri" href="#tools" data-tech="g">Подобрать дом из бруса</a>
+    </div>
+  </div>
+</section>
+
+<section class="sv" id="bani" aria-labelledby="bh">
+  <div class="wrap hgrid">
+    <figure class="hfig rv-in"><img src="assets/g/54.webp" alt="Сданная баня 6×6 м из профилированного бруса" loading="lazy" width="1280" height="960"></figure>
+    <div class="htext rv-in">
+      <h2 id="bh">Бани</h2>
+      <p class="price">от 747 000 ₽<small>минимальная цена в каталоге бань, 12–84 м²</small></p>
+      <ul class="kl">
+        <li><span>Из профилированного бруса</span><span>26 проектов</span></li>
+        <li><span>Каркасные</span><span>26 проектов</span></li>
+        <li><span>Мобильные</span><span>14 проектов, цена по запросу</span></li>
+      </ul>
+      <a class="btn pri" href="#tools" data-tech="bp">Подобрать баню</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="inc rv-in">
+      <div><h3>Что входит в цену дома</h3><ul><li>Материалы и доставка до 500 км от производства в Пестово</li><li>Погрузка и разгрузка материала</li><li>Сборка на участке штатной бригадой из 2–3 человек</li><li>Внутренняя отделка: дом сдаётся готовым к жизни</li></ul></div>
+      <div><h3>Что считается отдельно</h3><ul><li>Фундамент: железобетонные или винтовые сваи, монолитная плита, ленточный или блочный</li><li>Коммуникации: электрика, вода, септик</li><li>Доставка дальше 500 км: 140 ₽ за километр</li><li>Индивидуальный проект: эскизный (в том числе под ипотеку) или архитектурно-строительный</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="tools" id="tools" aria-labelledby="th">
+  <div class="wrap">
+    <div class="head rv-in">
+      <h2 id="th">Подберите проект и посчитайте платежи</h2>
+      <p class="lead">Цены и условия взяты с ecostyl.ru 5 ноября 2026 года. Это ориентир, а не коммерческое предложение: точную смету делает менеджер.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Калькуляторы">
+      <button class="tab" role="tab" id="t1" aria-controls="pn1" aria-selected="true">Подбор проекта</button>
+      <button class="tab" role="tab" id="t2" aria-controls="pn2" aria-selected="false" tabindex="-1">Доставка и оплата</button>
+    </div>
+    <div class="panel" role="tabpanel" id="pn1" aria-labelledby="t1">
+      <div class="pk">
+        <div>
+          <h3>Что строим?</h3>
+          <div class="field"><span class="lbl" id="techl">Тип постройки</span><div class="seg" id="tech" role="group" aria-labelledby="techl"></div></div>
+          <div class="field"><label for="area">Площадь: <span class="val" id="areav"></span></label><input type="range" id="area" min="12" max="178" step="2"></div>
+          <div class="field" id="bedf"><label for="bed">Спальни</label><select id="bed"><option value="0">Не важно</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4 и больше</option></select></div>
+          <div class="field"><label for="sort">Сначала</label><select id="sort"><option value="near">ближе по площади</option><option value="cheap">дешевле</option></select></div>
+          <p class="src">Минимальные цены проектов из каталога ecostyl.ru (каркасные дома, клееный брус, бани), 05.11.2026. Без фундамента и коммуникаций. Картинки — визуализации проектов с сайта компании.</p>
+        </div>
+        <div>
+          <div class="sum" id="psum" aria-live="polite"></div>
+          <div class="res" id="pres"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel" role="tabpanel" id="pn2" aria-labelledby="t2" hidden>
+      <div class="calc">
+        <div>
+          <h3>Сколько и когда платить</h3>
+          <p class="note">Схема оплаты наличными с ecostyl.ru: 65% после разгрузки материала, 15% после стропильной системы, 20% после подписания акта приёмки.</p>
+          <div class="field"><label for="cp">Цена дома или бани, ₽</label><input type="number" id="cp" inputmode="numeric" min="300000" step="1000" value="2541000"></div>
+          <p class="small" id="cpn">Для примера: проект 005, каркасный дом 128 м². Выберите свой во вкладке «Подбор проекта».</p>
+          <div class="field"><label for="km">Расстояние от Пестово до участка: <span class="val" id="kmv"></span></label><input type="range" id="km" min="0" max="2000" step="10" value="420"></div>
+          <p class="small">Расстояние по дороге посмотрите в <a class="tl" href="https://yandex.ru/maps/?rtext=%D0%9F%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE~&amp;rtt=auto" target="_blank" rel="noopener noreferrer">Яндекс Картах от Пестово</a>.</p>
+        </div>
+        <div class="out" aria-live="polite">
+          <div class="lbl">Итого: дом и доставка, без фундамента</div>
+          <div class="big" id="ctot"></div>
+          <div class="stages" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="mini"><span>1. После разгрузки материала, 65%</span><span id="c1"></span></div>
+          <div class="mini"><span>2. После стропильной системы, 15%</span><span id="c2"></span></div>
+          <div class="mini"><span>3. После акта приёмки, 20%</span><span id="c3"></span></div>
+          <div class="mini"><span id="cdl">Доставка</span><span id="cd"></span></div>
+          <p class="note">При безналичной оплате 65% вносят минимум за два дня до отгрузки. Можно оплатить материнским капиталом и ипотекой.</p>
+          <a class="btn pri" href="#estimate" id="cgo">Получить точный расчёт</a>
+        </div>
+      </div>
+      <p class="src">Источник: ecostyl.ru, разделы «Оплата и доставка» и «Вопрос-ответ», 05.11.2026. Доставка до 500 км от Пестово бесплатно, дальше 140 ₽/км.</p>
+    </div>
+  </div>
+</section>
+
+<section id="process" aria-labelledby="ph">
+  <div class="wrap">
+    <div class="head rv-in" style="margin-bottom:0">
+      <h2 id="ph">Как будем строить</h2>
+      <p class="lead">Пять шагов из раздела «Как заказать». Платите по факту выполненной работы, а не вперёд.</p>
+    </div>
+    <ol class="tline rv-in">
+      <li><h3>Договор</h3><p>В офисе в Москве, Петербурге или Пестово. Можно удалённо: оригиналы привезут вместе с материалом.</p><span class="pay">0 ₽</span></li>
+      <li><h3>Бригада и материалы</h3><p>На участок приезжают бригада и весь комплект материалов.</p><span class="pay">65% после разгрузки</span></li>
+      <li><h3>Строительство</h3><p>Сборка дома на вашем фундаменте, кровля, внутренняя отделка.</p><span class="pay">15% после стропил</span></li>
+      <li><h3>Приёмка</h3><p>Принимаете дом и подписываете акт приёма-передачи.</p><span class="pay">20% после акта</span></li>
+      <li><h3>Гарантия</h3><p>Начинает действовать гарантия на отделку, кровлю и конструкцию.</p></li>
+    </ol>
+    <div class="ways rv-in">
+      <div><b>Наличные и безналичный расчёт</b><span>поэтапно, без рассрочки и без предоплаты</span></div>
+      <div><b>Материнский капитал и господдержка</b><span>принимают в счёт оплаты</span></div>
+      <div><b>Ипотека: обычная, военная, социальная, сельская</b><span>через любой банк РФ</span></div>
+      <div><b>Кредит</b><span>банки-партнёры, в том числе Сбербанк и Почта Банк</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="revs" id="reviews" aria-labelledby="rh">
+  <div class="wrap">
+    <div class="rv-in">
+      <h2 id="rh">Видеоотзывы заказчиков</h2>
+      <p class="lead">Ролики из группы ЭКОСТИЛЬ во ВКонтакте. Открываются на vk.com.</p>
+    </div>
+    <div class="rgrid" id="rgrid"></div>
+    <p style="margin-top:30px"><a class="tl" href="https://vk.com/club219186648" target="_blank" rel="noopener noreferrer">Группа ЭКОСТИЛЬ во ВКонтакте</a> · <a class="tl" href="https://www.youtube.com/@ecostyl_ru" target="_blank" rel="noopener noreferrer">YouTube @ecostyl_ru</a></p>
+  </div>
+</section>
+
+<section id="geo" aria-labelledby="ah">
+  <div class="wrap agrid">
+    <div class="rv-in">
+      <h2 id="ah">Где строим и где посмотреть дома</h2>
+      <p class="lead">Москва и область, Петербург и Ленинградская область, а также другие регионы России: материал везут с производства в Пестово.</p>
+      <ul class="offs">
+        <li><b>Петербург, Кудрово</b><span>«Малоэтажная страна», МЕГА Дыбенко, д. 33</span><a href="tel:+79626847870">+7 (962) 684-78-70</a><a href="https://yandex.ru/maps/?text=%D0%9C%D0%B0%D0%BB%D0%BE%D1%8D%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B0%20%D0%9C%D0%95%D0%93%D0%90%20%D0%94%D1%8B%D0%B1%D0%B5%D0%BD%D0%BA%D0%BE" target="_blank" rel="noopener noreferrer">На карте</a></li>
+        <li><b>Москва, Котельники</b><span>«Малоэтажная страна», МЕГА Белая Дача, д. 30</span><a href="tel:+79934401608">+7 (993) 440-16-08</a><a href="https://yandex.ru/maps/?text=%D0%9C%D0%B0%D0%BB%D0%BE%D1%8D%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B0%20%D0%91%D0%B5%D0%BB%D0%B0%D1%8F%20%D0%B4%D0%B0%D1%87%D0%B0" target="_blank" rel="noopener noreferrer">На карте</a></li>
+        <li><b>Москва, Марфино</b><span>«Малоэтажная страна», д. 10</span><a href="tel:+79953460816">+7 (995) 346-08-16</a><a href="https://yandex.ru/maps/?text=%D0%9C%D0%B0%D0%BB%D0%BE%D1%8D%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B0%20%D0%9C%D0%B0%D1%80%D1%84%D0%B8%D0%BD%D0%BE" target="_blank" rel="noopener noreferrer">На карте</a></li>
+        <li><b>Производство, Пестово</b><span>Новгородская область: склады, комплектовка и отгрузка</span></li>
+      </ul>
+    </div>
+    <div class="mapbox rv-in" id="mapbox">
+      <p>Карта Северо-Запада и Центра, метка — производство в Пестово. Офисы — по ссылкам «На карте» слева. Карта загружается с OpenStreetMap только по нажатию.</p>
+      <button type="button" class="btn" id="mapb">Показать карту</button>
+    </div>
+  </div>
+</section>
+
+<section class="co" id="company" aria-labelledby="coh">
+  <div class="wrap cogrid">
+    <div class="rv-in">
+      <h2 id="coh">О компании</h2>
+      <p class="lead">Своя сырьевая база, штатные бригады и работа напрямую, без посредников. Весь пакет документов по договору.</p>
+      <dl class="kv">
+        <dt>Компания</dt><dd>ООО «ЭКОСТИЛЬ» <span class="badge">ДЕЙСТВУЮЩЕЕ</span></dd>
+        <dt>ОГРН</dt><dd>1235300000650</dd>
+        <dt>ИНН / КПП</dt><dd>5300007670 / 530001001</dd>
+        <dt>Регистрация</dt><dd>16.02.2023, Новгородская область</dd>
+        <dt>Адрес</dt><dd>174510, Новгородская обл., г. Пестово, ул. Биржа-3, д. 40, пом. 1</dd>
+        <dt>Проверено</dt><dd>05.11.2026, ЕГРЮЛ на egrul.nalog.ru</dd>
+      </dl>
+    </div>
+    <div class="wty rv-in">
+      <h3>Гарантия и условия</h3>
+      <ul>
+        <li>Гарантия от 1 до 3 лет: на внешнюю и внутреннюю отделку, кровлю и целостность конструкции</li>
+        <li>Цена фиксируется в рублях и не пересматривается во время стройки</li>
+        <li>Изменения в проект можно внести и после договора</li>
+        <li>Бесплатный расчёт по вашему проекту</li>
+      </ul>
+      <p class="small">По данным ecostyl.ru. Срок гарантии на конкретный дом указан в договоре.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="qh">
+  <div class="wrap fwrap">
+    <h2 id="qh">Частые вопросы</h2>
+    <details><summary>Что входит в стоимость дома?</summary><p>Материалы и доставка до 500 км от производства в Пестово, погрузка и разгрузка, сборка на участке. Дом сдаётся с внутренней отделкой, но без коммуникаций (электрика, вода, септик). Фундамент считается отдельно.</p></details>
+    <details><summary>Нужна ли предоплата?</summary><p>Нет. Можно зафиксировать цену и встать в очередь на строительство, ничего не внося. Первый платёж, 65%, — после разгрузки материала на участке; при безналичной оплате — минимум за два дня до отгрузки.</p></details>
+    <details><summary>Кто собирает дом?</summary><p>Штатные бригады компании по 2–3 человека из Северо-Западного региона.</p></details>
+    <details><summary>Можно ли построить по своему проекту?</summary><p>Да. Проекты каталога можно менять под себя, можно принести свой. Стоимость считают по расходу материалов и объёму работ, расчёт бесплатный.</p></details>
+    <details><summary>Сколько стоит доставка далеко от Москвы и Петербурга?</summary><p>До 500 км от Пестово бесплатно, дальше 140 ₽ за километр. Точную сумму подскажет менеджер.</p></details>
+    <details><summary>Сколько прослужит каркасный дом?</summary><p>По данным компании, в среднем 50 лет. Главное — чтобы внутрь не попадала влага и не копился конденсат.</p></details>
+    <details><summary>Как заключить договор, если я в другом городе?</summary><p>Документы согласуют удалённо, а оригиналы привезут вместе с материалом на участок. Либо приезжайте в офис в Москве, Петербурге или Пестово.</p></details>
+  </div>
+</section>
+
+<section class="est-s" id="estimate" aria-labelledby="eh">
+  <div class="wrap cgrid">
+    <div class="rv-in">
+      <h2 id="eh">Расскажите, что хотите построить</h2>
+      <p class="lead">Менеджер посчитает выбранный проект с фундаментом и доставкой до вашего участка.</p>
+      <ul class="cl" id="clist"></ul>
+      <ul class="cl">
+        <li><small>Мессенджеры</small><span class="soc"><a href="https://wa.me/79626847870" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://t.me/SPB_ECOSTYL" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://vk.me/club219186648" target="_blank" rel="noopener noreferrer">ВКонтакте</a></span></li>
+      </ul>
+    </div>
+    <form id="form" novalidate class="rv-in">
+      <div class="demo-note">Демо-форма. Заявка никуда не отправляется: это демонстрация.</div>
+      <div class="frow">
+        <div class="field"><label for="fn">Имя</label><input type="text" id="fn" autocomplete="name"></div>
+        <div class="field"><label for="fp">Телефон</label><input type="tel" id="fp" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__"></div>
+      </div>
+      <div class="field"><label for="ft">Что строим</label><select id="ft"><option value="f">Каркасный дом</option><option value="g">Дом из клееного бруса</option><option value="bp">Баня из бруса</option><option value="bf">Каркасная баня</option><option value="bm">Мобильная баня</option><option value="own">По моему проекту</option></select></div>
+      <details class="more-f" id="fmore"><summary>Уточнить детали (необязательно)</summary>
+      <div class="field"><label for="fpr">Проект из каталога</label><input type="text" id="fpr" placeholder="Например, 005"></div>
+      <div class="frow">
+        <div class="field"><label for="fb">Бюджет</label><select id="fb"><option>Пока не знаю</option><option>До 1 млн ₽</option><option>1–2 млн ₽</option><option>2–4 млн ₽</option><option>Больше 4 млн ₽</option></select></div>
+        <div class="field"><label for="fw">Когда строить</label><select id="fw"><option>В этом сезоне</option><option>В следующем году</option><option>Пока выбираю</option></select></div>
+      </div>
+      <div class="field"><label for="fa">Где участок</label><input type="text" id="fa" autocomplete="address-level2" placeholder="Населённый пункт или район"></div>
+      <div class="field"><label for="fm">Комментарий</label><textarea id="fm" placeholder="Фундамент уже есть? Нужна терраса, котельная?"></textarea></div>
+      </details>
+      <label class="chk"><input type="checkbox" id="fc"> Согласен на обработку персональных данных</label>
+      <p class="err" id="ferr" role="alert"></p>
+      <button type="submit" class="btn pri">Отправить заявку</button>
+      <div class="sent" id="sent" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fg">
+    <div><img src="assets/logo.svg" alt="ЭКОСТИЛЬ" width="98" height="64"><p>Каркасные дома, дома из клееного бруса и бани под ключ. Производство в Пестово, офисы в Петербурге и Москве.</p><p>ООО «ЭКОСТИЛЬ», ОГРН 1235300000650</p></div>
+    <div><b>Связь</b><p><a href="tel:+79626847870">+7 (962) 684-78-70</a> СПб</p><p><a href="tel:+79934401608">+7 (993) 440-16-08</a> Москва</p><p><a href="mailto:spb@ecostyl.ru">spb@ecostyl.ru</a></p><p><a href="mailto:msk@ecostyl.ru">msk@ecostyl.ru</a></p></div>
+    <div><b>Об этом демо</b><p>Данные, фото объектов и цены — с ecostyl.ru (05.11.2026). Видео на первом экране — стоковое (Mixkit), не объекты компании. Без cookies, счётчиков и аналитики.</p></div>
+  </div>
+  <div class="demo-bar">Демо-концепт, не официальный сайт компании ЭКОСТИЛЬ. <a href="https://ecostyl.ru/" rel="noopener noreferrer">Официальный сайт: ecostyl.ru</a></div>
+</footer>
+
+<nav class="bbar" aria-label="Быстрые действия">
+  <a href="tel:+79626847870" id="bcall">Позвонить</a>
+  <a href="https://wa.me/79626847870" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  <a href="#tools" class="est">Расчёт</a>
+</nav>
+
+<dialog id="lb" aria-label="Просмотр фото">
+  <div class="lbin">
+    <button type="button" class="lbbtn close" id="lbx" aria-label="Закрыть">&times;</button>
+    <button type="button" class="lbbtn prev" id="lbp" aria-label="Предыдущее фото">&#8249;</button>
+    <button type="button" class="lbbtn next" id="lbn" aria-label="Следующее фото">&#8250;</button>
+    <img id="lbi" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <div class="lbcap" id="lbc"></div>
+  </div>
+</dialog>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+'use strict';
+function q(s,r){return (r||document).querySelector(s)}
+function qa(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function rub(n){return Math.round(n).toLocaleString('ru-RU').replace(/\s/g,' ')+' ₽'}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* ---------- region ---------- */
+var REG={
+  spb:{label:'Петербург и Ленобласть',mail:'spb@ecostyl.ru',ph:[['+79626847870','+7 (962) 684-78-70','Сергей, Петербург и Ленобласть']]},
+  msk:{label:'Москва и другие регионы',mail:'msk@ecostyl.ru',ph:[['+79934401608','+7 (993) 440-16-08','Артём Межорин, Котельники и регионы'],['+79953460816','+7 (995) 346-08-16','Артём Дмитриев, Марфино и регионы']]}
+};
+var reg='spb';
+try{var u=new URLSearchParams(location.search).get('region');if(u&&REG[u])reg=u;else{var s=localStorage.getItem('eco-reg');if(s&&REG[s])reg=s}}catch(e){}
+function setReg(r,push){
+  reg=r;var R=REG[r],p=R.ph[0];
+  qa('[data-reg]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.reg===r?'true':'false')});
+  q('#hphone').href='tel:'+p[0];q('[data-ph]').textContent=p[1];q('[data-phl]').textContent=R.label;
+  q('#hcall').href='tel:'+p[0];q('#bcall').href='tel:'+p[0];
+  q('#cm-phones').innerHTML=R.ph.map(function(x){return '<a href="tel:'+x[0]+'"><b>Позвонить '+x[1]+'</b><small>'+x[2]+'</small></a>'}).join('');
+  var m=q('#cm-mail');m.href='mailto:'+R.mail;q('small',m).textContent=R.mail;
+  q('#clist').innerHTML=R.ph.map(function(x){return '<li><small>'+x[2]+'</small><a href="tel:'+x[0]+'">'+x[1]+'</a></li>'}).join('')+'<li><small>Почта</small><a href="mailto:'+R.mail+'">'+R.mail+'</a></li>';
+  try{localStorage.setItem('eco-reg',r)}catch(e){}
+  if(push){try{var url=new URL(location.href);url.searchParams.set('region',r);history.replaceState(null,'',url)}catch(e){}}
+}
+qa('[data-reg]').forEach(function(b){b.addEventListener('click',function(){setReg(b.dataset.reg,true);if(b.closest('#nav'))closeN()})});
+setReg(reg,false);
+
+/* ---------- header menus ---------- */
+var cbtn=q('#cbtn'),cm=q('#cmenu'),bur=q('#burger'),nav=q('#nav');
+function closeC(){cm.classList.remove('open');cbtn.setAttribute('aria-expanded','false')}
+function closeN(){nav.classList.remove('open');bur.setAttribute('aria-expanded','false')}
+cbtn.addEventListener('click',function(e){e.stopPropagation();var o=!cm.classList.contains('open');closeN();cm.classList.toggle('open',o);cbtn.setAttribute('aria-expanded',o?'true':'false');if(o){var f=q('a',cm);f&&f.focus()}});
+bur.addEventListener('click',function(e){e.stopPropagation();var o=!nav.classList.contains('open');closeC();nav.classList.toggle('open',o);bur.setAttribute('aria-expanded',o?'true':'false')});
+qa('a',nav).forEach(function(a){a.addEventListener('click',closeN)});
+qa('a',cm).forEach(function(a){a.addEventListener('click',closeC)});
+document.addEventListener('click',function(e){if(!cm.contains(e.target)&&e.target!==cbtn)closeC();if(nav.classList.contains('open')&&!nav.contains(e.target)&&!bur.contains(e.target))closeN()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(cm.classList.contains('open')){closeC();cbtn.focus()}if(nav.classList.contains('open')){closeN();bur.focus()}}});
+
+/* ---------- hero video ---------- */
+var hv=q('#hv'),vb=q('#vbtn'),RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var P='<rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/>',PL='<path d="M4 2l10 6-10 6z"/>';
+function vstate(){var on=!hv.paused;q('#vico').innerHTML=on?P:PL;vb.setAttribute('aria-label',on?'Остановить видео':'Запустить видео')}
+if(!RM){hv.setAttribute('autoplay','');var pr=hv.play();if(pr&&pr.catch)pr.catch(function(){vstate()})}
+hv.addEventListener('play',vstate);hv.addEventListener('pause',vstate);vstate();
+vb.addEventListener('click',function(){if(hv.paused)hv.play();else hv.pause()});
+
+/* ---------- gallery ---------- */
+var G=[
+['45','f','Дом 16,7×9,7 м','dom-16.7h9.7m-karkas'],['03','f','Дом 7,5×13 м','dom-7.5h13-m-karkas'],['46','g','Дом 9,5×9 м','dom-9.5h9m-kleenyj-brus'],
+['54','b','Баня 6×6 м, профилированный брус','banya-6h6m-prof-brus'],['44','f','Дом 11,2×11,8 м','dom-11.2h11.8m-karkas'],['59','f','Дом 8×9 м','dom-8h9m-karkas1'],
+['07','g','Дом 7×9 м с террасой','dom-7h9-m-s-terrasoj-kleenyj-brus'],['47','f','Дом 13,3×10,8 м','dom-13.3h10.8m-karkas'],['60','f','Каркасный дом','dom-karkas'],
+['36','f','Дом 8×9,5 м','dom-8h9.5-karkas'],['20','g','Дом 7×8 м','dom-7h8m-kleenyj-brus'],['32','b','Баня 6×8 м','banya-6h8'],
+['39','f','Дом 8,5×9 м','dom-8.5h9-karkas'],['40','f','Дом 9×7 м','dom-9h7m-karkas'],['02','f','Дом 9×9 м','dom-9h9-m-karkas'],
+['49','g','Дом 6×8 м','dom-6x8m-kleenyj-brus'],['55','b','Баня 6×4,5 м, профилированный брус','banya-6h4.5m-prof-brus'],['56','f','Дом 6×8 м с террасой','dom-6x8m-s-terassoj-karkas1'],
+['05','f','Дом 8×8 м','dom-8h8-m-karkas'],['14','f','Дом 7,5×9 м','dom-7.5h9m-karkas'],['19','f','Дом 8×9 м','dom-8h9-m-karkas3'],['21','f','Дом 3×8 м','dom-3x8m-karkas']
+];
+var TN={f:'каркас',g:'клееный брус',b:'баня'};
+var CATS=[['all','Все'],['f','Каркасные'],['g','Клееный брус'],['b','Бани']];
+var cur='all',exp=false,LIM=7,shown=[],li=0;
+var gal=q('#gal'),chips=q('#chips'),moreb=q('#moreb');
+G.forEach(function(g,i){
+  var b=document.createElement('button');b.type='button';b.className='gi';b.dataset.cat=g[1];
+  b.innerHTML='<span class="ph"><img loading="lazy" decoding="async" width="640" height="480" alt="'+esc(g[2]+', '+TN[g[1]])+'" src="assets/g/'+g[0]+'-t.webp"></span><span class="cap"><b>'+esc(g[2])+'</b> · '+TN[g[1]]+'</span>';
+  b.addEventListener('click',function(){openLb(i)});gal.appendChild(b);
+});
+CATS.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.cat=c[0];b.textContent=c[1];b.addEventListener('click',function(){cur=c[0];exp=false;filt()});chips.appendChild(b)});
+function filt(){
+  qa('.chip',chips).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cat===cur?'true':'false')});
+  var items=qa('.gi',gal),list=items.filter(function(b){return cur==='all'||b.dataset.cat===cur});
+  var lim=exp?list.length:Math.min(LIM,list.length);shown=[];
+  items.forEach(function(b){b.hidden=true;b.className='gi'});
+  list.forEach(function(b,k){if(k>=lim)return;b.hidden=false;var p=k<7?k:-1;if(p>-1)b.classList.add('p'+p);
+    var im=q('img',b),n=G[items.indexOf(b)][0],want='assets/g/'+n+(p===0||p===6?'':'-t')+'.webp';if(im.getAttribute('src')!==want)im.src=want;shown.push(items.indexOf(b))});
+  if(list.length>LIM){moreb.hidden=false;moreb.textContent=exp?'Свернуть':'Показать все '+list.length+' фото'}else moreb.hidden=true;
+}
+moreb.addEventListener('click',function(){exp=!exp;filt();if(!exp)q('#work').scrollIntoView()});
+filt();
+var lb=q('#lb'),lbi=q('#lbi'),lbc=q('#lbc'),lastF=null;
+function showLb(){var g=G[shown[li]];lbi.src='assets/g/'+g[0]+'.webp';lbi.alt=g[2]+', '+TN[g[1]];lbc.innerHTML=esc(g[2])+' · '+TN[g[1]]+' · <a href="https://ecostyl.ru/otchety/'+g[3]+'" target="_blank" rel="noopener noreferrer">отчёт на ecostyl.ru</a> · '+(li+1)+' из '+shown.length}
+function openLb(i){li=Math.max(0,shown.indexOf(i));lastF=document.activeElement;showLb();if(lb.showModal)lb.showModal();else lb.setAttribute('open','')}
+function step(d){li=(li+d+shown.length)%shown.length;showLb()}
+q('#lbx').addEventListener('click',function(){lb.close()});q('#lbp').addEventListener('click',function(){step(-1)});q('#lbn').addEventListener('click',function(){step(1)});
+lb.addEventListener('close',function(){lastF&&lastF.focus()});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lbin'))lb.close()});
+lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+var tx=0;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)step(d<0?1:-1)});
+
+/* ---------- reviews ---------- */
+var RV=[
+['1','Креативный отзыв от заказчика','19.06.2024','https://vk.com/video-219186648_456239108'],
+['2','Отзыв Романа из Московской области','03.03.2024','https://vk.com/video-219186648_456239086'],
+['3','Отзыв Натальи','15.10.2023','https://vk.com/video-219186648_456239054'],
+['4','Отзыв заказчицы','07.07.2023','https://vk.com/video-219186648_456239033'],
+['5','Клиентка из Кировского района','03.05.2023','https://vk.com/video-219186648_456239028'],
+['6','Отзыв о нашей работе','20.04.2023','https://vk.com/video-219186648_456239017']];
+q('#rgrid').innerHTML=RV.map(function(r){return '<a class="rv rv-in" href="'+r[3]+'" target="_blank" rel="noopener noreferrer"><span class="im"><img loading="lazy" width="640" height="360" alt="" src="assets/r/'+r[0]+'.webp"><span class="pl"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg></span></span><b>'+esc(r[1])+'</b><small>'+r[2]+' · ВКонтакте</small></a>'}).join('');
+
+/* ---------- project picker ---------- */
+var C=[["f","001",84,"8x6",2,1603000,"karkasnye-doma/001"],["f","002",112,"8x7",3,1849000,"karkasnye-doma/002"],["f","003",120,"12x10",3,3189000,"karkasnye-doma/003"],["f","004",70,"10x8",2,1646000,"karkasnye-doma/004"],["f","005",128,"9.5x8",3,2541000,"karkasnye-doma/005"],["f","006",108,"13x8",2,2820000,"karkasnye-doma/006"],["f","007",108,"12x9",2,2684000,"karkasnye-doma/007"],["f","008",116,"9x8.5",3,2630000,"karkasnye-doma/008"],["f","009",75,"10x7.5",2,1963000,"karkasnye-doma/009"],["f","010",124,"9.5x8",3,2191000,"karkasnye-doma/010"],["f","011",56,"9x7.2",2,1411000,"karkasnye-doma/011"],["f","012",110,"12.5x10",2,2508000,"karkasnye-doma/012"],["f","014",141,"12x9",4,2860000,"karkasnye-doma/014"],["f","015",140,"14.3x10.5",3,3813000,"karkasnye-doma/015"],["f","016",77,"10x10",2,1839000,"karkasnye-doma/016"],["f","017",128,"8x8",4,2479000,"karkasnye-doma/017"],["f","018",153,"",3,4155000,"karkasnye-doma/018"],["f","019",84,"7x6",3,1588000,"karkasnye-doma/019"],["f","020",75,"12x7.5",2,1876000,"karkasnye-doma/020"],["f","022",128,"8x8",4,2174000,"karkasnye-doma/022"],["f","023",120,"10.5x7.5",3,3622000,"karkasnye-doma/023"],["f","024",105,"12.3x8.5",2,3376000,"karkasnye-doma/024"],["f","025",133,"9x8",3,2596000,"karkasnye-doma/025"],["f","026",160,"13.3x8.4",4,3469000,"karkasnye-doma/026"],["f","028",123,"11x6",4,1969000,"karkasnye-doma/028"],["f","030",104,"11.5x9.5",3,2914000,"karkasnye-doma/030"],["f","031",144,"9x8",4,2696000,"karkasnye-doma/031"],["f","032",138,"12x9.5",3,3397000,"karkasnye-doma/032"],["f","033",175,"11x11",4,3463000,"karkasnye-doma/033"],["f","035",173,"12.5x8",4,3072000,"karkasnye-doma/035"],["f","036",83,"10x9",2,2101000,"karkasnye-doma/036"],["f","037",88,"12x8",2,2076000,"karkasnye-doma/037"],["f","039",82,"8x7.5",3,1448000,"karkasnye-doma/039"],["f","040",148,"",4,3687000,"karkasnye-doma/040"],["f","041",108,"12x9",2,2273000,"karkasnye-doma/041"],["f","043",64,"8x8",2,1537000,"karkasnye-doma/043"],["f","044",108,"9x7",3,1581000,"karkasnye-doma/044"],["f","045",132,"9.5x8",5,2062000,"karkasnye-doma/045"],["f","046",160,"10x8",4,2442000,"karkasnye-doma/046"],["f","054",156,"12x7.5",4,3313000,"karkasnye-doma/054"],["f","056",167,"11.5x9",4,3455000,"karkasnye-doma/056"],["f","058",64,"8x8",2,1716000,"karkasnye-doma/058"],["f","059",56,"9x7",2,1658000,"karkasnye-doma/059"],["f","061",90,"12x8.5",2,2579000,"karkasnye-doma/061"],["f","064",89,"11x7.5",2,2147000,"karkasnye-doma/064"],["f","067",128,"8x8",4,2518000,"karkasnye-doma/067"],["f","072",144,"9x8",4,1985000,"karkasnye-doma/072"],["f","076",124,"9.5x8",5,1940000,"karkasnye-doma/076"],["f","077",128,"8x8",2,2421000,"karkasnye-doma/077"],["f","078",119,"9x8",4,1771000,"karkasnye-doma/078"],["f","081",145,"16x11",4,3630000,"karkasnye-doma/081"],["f","082",81,"9x9",2,1764000,"karkasnye-doma/082"],["f","083",99,"13.5x8",3,2387000,"karkasnye-doma/083"],["f","084",81,"9.5x9",2,1906000,"karkasnye-doma/084"],["f","085",178,"13x9.5",5,4079000,"karkasnye-doma/085"],["f","086",108,"12x10",2,2775000,"karkasnye-doma/086"],["f","087",135,"13x12.5",3,3448000,"karkasnye-doma/087"],["f","088",136,"9x8",3,2496000,"karkasnye-doma/088"],["f","089",121,"10x8",2,2593000,"karkasnye-doma/089"],["f","090",150,"11x9",2,2762000,"karkasnye-doma/090"],["f","091",71,"9.5x7.5",2,2090000,"karkasnye-doma/091"],["f","092",101,"11.5x9",3,2739000,"karkasnye-doma/092"],["g","001",84,"8x6",2,3837000,"doma-iz-kleenogo-brusa/001"],["g","002",112,"8x7",3,4531000,"doma-iz-kleenogo-brusa/002"],["g","003",120,"12x10",3,6134000,"doma-iz-kleenogo-brusa/003"],["g","004",70,"10x8",2,3553000,"doma-iz-kleenogo-brusa/004"],["g","005",128,"9.5x8",3,5980000,"doma-iz-kleenogo-brusa/005"],["g","007",108,"12x9",2,5214000,"doma-iz-kleenogo-brusa/007"],["g","008",116,"9x8.5",3,5678000,"doma-iz-kleenogo-brusa/008"],["g","010",124,"9.5x8",3,4910000,"doma-iz-kleenogo-brusa/010"],["g","011",56,"9x7.2",2,3030000,"doma-iz-kleenogo-brusa/011"],["g","012",68,"12.5x10",2,4902000,"doma-iz-kleenogo-brusa/012"],["g","014",141,"12x9",4,6691000,"doma-iz-kleenogo-brusa/014"],["g","015",140,"14.3x10.5",3,7427000,"doma-iz-kleenogo-brusa/015"],["g","016",62,"10x10",2,4175000,"doma-iz-kleenogo-brusa/016"],["g","017",128,"8x8",4,6414000,"doma-iz-kleenogo-brusa/017"],["g","019",84,"7x6",3,3778000,"doma-iz-kleenogo-brusa/019"],["g","020",75,"12x7.5",2,3818000,"doma-iz-kleenogo-brusa/020"],["g","022",128,"8x8",4,5092000,"doma-iz-kleenogo-brusa/022"],["g","025",133,"9x8",3,5735000,"doma-iz-kleenogo-brusa/025"],["g","026",160,"13.3x8.4",4,7513000,"doma-iz-kleenogo-brusa/026"],["g","028",123,"11x6",2,4862000,"doma-iz-kleenogo-brusa/028"],["g","031",144,"9x8",4,6804000,"doma-iz-kleenogo-brusa/031"],["g","032",138,"12x9.5",3,6892000,"doma-iz-kleenogo-brusa/032"],["g","033",175,"11x11",4,7232000,"doma-iz-kleenogo-brusa/033"],["g","036",83,"10x9",2,4317000,"doma-iz-kleenogo-brusa/036"],["g","037",88,"12x8",2,4354000,"doma-iz-kleenogo-brusa/037"],["g","039",82,"8x7.5",3,3792000,"doma-iz-kleenogo-brusa/039"],["g","040",148,"",4,8010000,"doma-iz-kleenogo-brusa/040"],["g","041",108,"12x9",2,5003000,"doma-iz-kleenogo-brusa/041"],["g","043",64,"8x8",2,3352000,"doma-iz-kleenogo-brusa/043"],["g","044",108,"9x7",3,4193000,"doma-iz-kleenogo-brusa/044"],["g","045",132,"9.5x8",5,5113000,"doma-iz-kleenogo-brusa/045"],["g","046",160,"10x8",4,6102000,"doma-iz-kleenogo-brusa/046"],["g","054",156,"12x7.5",4,6767000,"doma-iz-kleenogo-brusa/054"],["g","058",64,"8x8",2,3609000,"doma-iz-kleenogo-brusa/058"],["g","059",56,"9x7",2,3699000,"doma-iz-kleenogo-brusa/059"],["g","061",90,"12x8.5",2,5110000,"doma-iz-kleenogo-brusa/061"],["g","064",89,"11x7.5",2,4381000,"doma-iz-kleenogo-brusa/064"],["g","067",128,"8x8",4,5457000,"doma-iz-kleenogo-brusa/067"],["g","072",144,"9x8",4,5328000,"doma-iz-kleenogo-brusa/072"],["g","076",124,"9.5x8",5,4728000,"doma-iz-kleenogo-brusa/076"],["g","077",128,"8x8",2,5433000,"doma-iz-kleenogo-brusa/077"],["g","078",119,"9x8",4,4541000,"doma-iz-kleenogo-brusa/078"],["g","081",145,"16x11",4,7273000,"doma-iz-kleenogo-brusa/081"],["g","082",81,"9x9",2,4193000,"doma-iz-kleenogo-brusa/082"],["g","083",99,"13.5x8",3,4764000,"doma-iz-kleenogo-brusa/083"],["g","084",81,"9.5x9",2,4082000,"doma-iz-kleenogo-brusa/084"],["g","085",178,"13x9.5",5,9023000,"doma-iz-kleenogo-brusa/085"],["g","086",108,"12x10",2,5376000,"doma-iz-kleenogo-brusa/086"],["g","087",135,"13x12.5",3,6873000,"doma-iz-kleenogo-brusa/087"],["g","088",136,"9x8",3,5523000,"doma-iz-kleenogo-brusa/088"],["g","091",71,"9.5x7.5",2,3982000,"doma-iz-kleenogo-brusa/091"],["g","092",101,"11.5x9",3,5177000,"doma-iz-kleenogo-brusa/092"],["bp","b-001",60.0,"10x6",0,1847000,"bani/bani-iz-brusa/b-001"],["bp","b-002",84.0,"9x6",0,2245000,"bani/bani-iz-brusa/b-002"],["bp","b-003",24.0,"6x4",0,1024000,"bani/bani-iz-brusa/b-003"],["bp","b-004",60.0,"6x6",0,1587000,"bani/bani-iz-brusa/b-004"],["bp","b-005",36.0,"6x6",0,1192000,"bani/bani-iz-brusa/b-005"],["bp","b-006",24.0,"6x4",0,1073000,"bani/bani-iz-brusa/b-006"],["bp","b-007",60.0,"6x6",0,1752000,"bani/bani-iz-brusa/b-007"],["bp","b-008",32.0,"6x6",0,1268000,"bani/bani-iz-brusa/b-008"],["bp","b-009",12.0,"4x3",0,792000,"bani/bani-iz-brusa/b-009"],["bp","b-010",22.0,"5.5x4",0,989000,"bani/bani-iz-brusa/b-010"],["bp","b-011",52.0,"6x6",0,1614000,"bani/bani-iz-brusa/b-011"],["bp","b-012",27.0,"6x4.5",0,1037000,"bani/bani-iz-brusa/b-012"],["bp","b-013",17.0,"4.75x4",0,943000,"bani/bani-iz-brusa/b-013"],["bp","b-014",24.0,"6x4",0,1031000,"bani/bani-iz-brusa/b-014"],["bp","b-015",20.0,"5x4",0,914000,"bani/bani-iz-brusa/b-015"],["bp","b-017",40.0,"11x5",0,1478000,"bani/bani-iz-brusa/b-017"],["bp","b-018",18.0,"6x3",0,922000,"bani/bani-iz-brusa/b-018"],["bp","b-019",18.0,"6x3",0,903000,"bani/bani-iz-brusa/b-019"],["bp","b-020",33.0,"7.5x6",0,1388000,"bani/bani-iz-brusa/b-020"],["bp","b-021",36.0,"6x6",0,1307000,"bani/bani-iz-brusa/b-021"],["bp","b-022",36.0,"6x6",0,1294000,"bani/bani-iz-brusa/b-022"],["bp","b-023",25.0,"6x4.5",0,1161000,"bani/bani-iz-brusa/b-023"],["bp","b-024",19.0,"5x4",0,931000,"bani/bani-iz-brusa/b-024"],["bp","b-025",40.0,"6x4",0,1326000,"bani/bani-iz-brusa/b-025"],["bp","b-026",60.0,"6x6",0,1718000,"bani/bani-iz-brusa/b-026"],["bp","b-027",16.0,"4x4",0,889000,"bani/bani-iz-brusa/b-027"],["bf","b-001",60.0,"10x6",0,1727000,"bani/karkasnye-bani/b-001"],["bf","b-002",84.0,"9x6",0,2139000,"bani/karkasnye-bani/b-002"],["bf","b-003",24.0,"6x4",0,957000,"bani/karkasnye-bani/b-003"],["bf","b-004",60.0,"6x6",0,1528000,"bani/karkasnye-bani/b-004"],["bf","b-005",36.0,"6x6",0,1134000,"bani/karkasnye-bani/b-005"],["bf","b-006",24.0,"6x4",0,1020000,"bani/karkasnye-bani/b-006"],["bf","b-007",60.0,"6x6",0,1693000,"bani/karkasnye-bani/b-007"],["bf","b-008",32.0,"6x6",0,1219000,"bani/karkasnye-bani/b-008"],["bf","b-009",12.0,"4x3",0,747000,"bani/karkasnye-bani/b-009"],["bf","b-010",22.0,"5.5x4",0,933000,"bani/karkasnye-bani/b-010"],["bf","b-011",52.0,"6x6",0,1556000,"bani/karkasnye-bani/b-011"],["bf","b-012",27.0,"6x4.5",0,985000,"bani/karkasnye-bani/b-012"],["bf","b-013",17.0,"4.75x4",0,901000,"bani/karkasnye-bani/b-013"],["bf","b-014",24.0,"6x4",0,978000,"bani/karkasnye-bani/b-014"],["bf","b-015",20.0,"5x4",0,866000,"bani/karkasnye-bani/b-015"],["bf","b-017",40.0,"11x5",0,1401000,"bani/karkasnye-bani/b-017"],["bf","b-018",18.0,"6x3",0,893000,"bani/karkasnye-bani/b-018"],["bf","b-019",18.0,"6x3",0,871000,"bani/karkasnye-bani/b-019"],["bf","b-020",33.0,"7.5x6",0,1325000,"bani/karkasnye-bani/b-020"],["bf","b-021",36.0,"6x6",0,1233000,"bani/karkasnye-bani/b-021"],["bf","b-022",36.0,"6x6",0,1213000,"bani/karkasnye-bani/b-022"],["bf","b-023",25.0,"6x4.5",0,1101000,"bani/karkasnye-bani/b-023"],["bf","b-024",19.0,"5x4",0,893000,"bani/karkasnye-bani/b-024"],["bf","b-025",40.0,"6x4",0,1267000,"bani/karkasnye-bani/b-025"],["bf","b-026",60.0,"6x6",0,1653000,"bani/karkasnye-bani/b-026"]];
+var TECH=[['f','Каркасный дом','frame'],['g','Клееный брус','glulam'],['bp','Баня из бруса','bprof'],['bf','Каркасная баня','bframe']];
+var TL={f:'Каркасный дом',g:'Дом из клееного бруса',bp:'Баня из профилированного бруса',bf:'Каркасная баня'};
+var tech='f',area=q('#area'),bed=q('#bed'),sortS=q('#sort'),seg=q('#tech');
+TECH.forEach(function(t){var b=document.createElement('button');b.type='button';b.dataset.t=t[0];b.textContent=t[1];b.addEventListener('click',function(){setTech(t[0])});seg.appendChild(b)});
+function rng(t){var a=C.filter(function(c){return c[0]===t}).map(function(c){return c[2]});return [Math.min.apply(null,a),Math.max.apply(null,a)]}
+function setTech(t,keep){
+  tech=t;qa('button',seg).forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===t?'true':'false')});
+  var r=rng(t),st=t.charAt(0)==='b'?1:2;area.min=Math.floor(r[0]);area.max=Math.ceil(r[1]);area.step=st;
+  if(!keep)area.value=t.charAt(0)==='b'?24:110;
+  q('#bedf').hidden=t.charAt(0)==='b';if(t.charAt(0)==='b')bed.value='0';pick();
+}
+function pick(){
+  var A=+area.value,B=+bed.value;q('#areav').textContent=A+' м²';
+  var all=C.filter(function(c){return c[0]===tech});
+  var L=all.filter(function(c){return Math.abs(c[2]-A)<=Math.max(8,A*.2)&&(!B||(B>=4?c[4]>=4:c[4]===B))});
+  L.sort(sortS.value==='cheap'?function(a,b){return a[5]-b[5]}:function(a,b){return Math.abs(a[2]-A)-Math.abs(b[2]-A)||a[5]-b[5]});
+  var sum=q('#psum'),res=q('#pres');
+  if(!L.length){sum.innerHTML='Под эти условия проектов нет. Измените площадь или число спален — или закажите свой проект, расчёт бесплатный.';res.innerHTML='';return}
+  var pr=L.map(function(c){return c[5]}),pm=L.map(function(c){return c[5]/c[2]});
+  sum.innerHTML='<b>'+L.length+' '+pl(L.length,'проект','проекта','проектов')+'</b> около '+A+' м²: от '+rub(Math.min.apply(null,pr))+' до '+rub(Math.max.apply(null,pr))+', в среднем '+rub(pm.reduce(function(a,b){return a+b},0)/pm.length)+' за м². Всего в разделе «'+TL[tech]+'»: '+all.length+'.';
+  var full={f:'frame',g:'glulam',bp:'bprof',bf:'bframe'}[tech];
+  res.innerHTML=L.slice(0,6).map(function(c){
+    return '<div class="pc"><div class="im"><img loading="lazy" width="480" height="387" alt="Визуализация проекта '+esc(c[1])+'" src="assets/p/'+full+'-'+esc(c[1])+'.webp"></div><div class="bd"><span class="nm">Проект '+esc(c[1].replace(/^b-/,''))+'</span><span class="sp">'+String(c[2]).replace('.',',')+' м² · '+esc(c[3].replace('x','×').replace(/\./g,','))+' м'+(c[4]?' · '+c[4]+' '+pl(c[4],'спальня','спальни','спален'):'')+'</span><span class="pr">от '+rub(c[5])+'</span><span class="pm">'+rub(c[5]/c[2])+' за м²</span><div class="act"><button type="button" data-n="'+esc(c[1])+'">Посчитать оплату</button><a href="https://ecostyl.ru/'+esc(c[6])+'" target="_blank" rel="noopener noreferrer">на ecostyl.ru</a></div></div></div>';
+  }).join('');
+  qa('button[data-n]',res).forEach(function(b){b.addEventListener('click',function(){var c=C.filter(function(x){return x[0]===tech&&x[1]===b.dataset.n})[0];useProj(c)})});
+}
+function pl(n,a,b,c){n=Math.abs(n)%100;var m=n%10;if(n>10&&n<20)return c;if(m>1&&m<5)return b;if(m===1)return a;return c}
+area.addEventListener('input',pick);bed.addEventListener('change',pick);sortS.addEventListener('change',pick);
+qa('[data-tech]').forEach(function(a){a.addEventListener('click',function(){setTech(a.dataset.tech);selTab(0)})});
+var sel=null;
+function useProj(c){sel=c;q('#cp').value=c[5];q('#cpn').textContent='Проект '+c[1].replace(/^b-/,'')+', '+TL[c[0]].toLowerCase()+' '+String(c[2]).replace('.',',')+' м²';calc();selTab(1);q('#tools').scrollIntoView({behavior:RM?'auto':'smooth'})}
+setTech('f');
+
+/* ---------- payment calc ---------- */
+var cp=q('#cp'),km=q('#km');
+function calc(){
+  var p=Math.max(0,+cp.value||0),k=+km.value,d=Math.max(0,k-500)*140;
+  q('#kmv').textContent=k+' км';
+  q('#c1').textContent=rub(p*.65);q('#c2').textContent=rub(p*.15);q('#c3').textContent=rub(p*.20);
+  q('#cdl').textContent=k<=500?'Доставка до 500 км':'+ доставка: '+(k-500)+' км × 140 ₽, отдельно';
+  q('#cd').textContent=d?rub(d):'в цене';q('#ctot').textContent=rub(p+d);
+}
+cp.addEventListener('input',function(){sel=null;q('#cpn').textContent='Своя сумма';calc()});km.addEventListener('input',calc);calc();
+q('#cgo').addEventListener('click',function(){
+  if(sel){q('#ft').value=sel[0];q('#fpr').value=sel[1].replace(/^b-/,'')}
+  var p=+cp.value;q('#fb').value=p<1e6?'До 1 млн ₽':p<2e6?'1–2 млн ₽':p<4e6?'2–4 млн ₽':'Больше 4 млн ₽';
+  q('#fmore').open=true;q('#fm').value='Расчёт с сайта: '+rub(p)+', до участка '+km.value+' км от Пестово.';
+});
+
+/* ---------- tabs ---------- */
+var tabs=qa('.tab'),pans=[q('#pn1'),q('#pn2')];
+function selTab(i){tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');t.tabIndex=k===i?0:-1;pans[k].hidden=k!==i})}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){selTab(i)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;selTab(n);tabs[n].focus()}})});
+
+/* ---------- map ---------- */
+q('#mapb').addEventListener('click',function(){
+  var mb=q('#mapbox');mb.classList.add('on');
+  mb.innerHTML='<iframe title="Карта: Пестово, Санкт-Петербург, Москва" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=29.0%2C55.2%2C39.5%2C60.3&amp;layer=mapnik&amp;marker=58.597%2C35.81"></iframe>';
+});
+
+/* ---------- form ---------- */
+var fp=q('#fp');
+fp.addEventListener('focus',function(){if(!fp.value)fp.value='+7 '});
+fp.addEventListener('blur',function(){var d=fp.value.replace(/\D/g,'');if(d.length===11&&(d[0]==='8'||d[0]==='7'))d=d.slice(1);if(d.length===10)fp.value='+7 ('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6,8)+'-'+d.slice(8);else if(fp.value.trim()==='+7')fp.value=''});
+q('#form').addEventListener('submit',function(e){
+  e.preventDefault();var er=q('#ferr'),d=fp.value.replace(/\D/g,'');
+  var msg=!q('#fn').value.trim()?'Напишите, как к вам обращаться.':(d.length<10?'Проверьте телефон: нужно 10 цифр после +7.':(!q('#fc').checked?'Отметьте согласие на обработку данных.':''));
+  er.textContent=msg;er.classList.toggle('show',!!msg);if(msg)return;
+  var s=q('#sent'),ft=q('#ft');
+  s.innerHTML='<b>Не отправлено: это демо.</b> На настоящем сайте заявка ушла бы менеджеру ЭКОСТИЛЬ. Вы указали:<ul><li>'+esc(ft.options[ft.selectedIndex].text)+(q('#fpr').value?', проект '+esc(q('#fpr').value):'')+'</li><li>Бюджет: '+esc(q('#fb').value)+'</li><li>Сроки: '+esc(q('#fw').value)+'</li>'+(q('#fa').value?'<li>Участок: '+esc(q('#fa').value)+'</li>':'')+'</ul>';
+  s.classList.add('show');s.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'});
+});
+
+/* ---------- reveal ---------- */
+if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});qa('.rv-in').forEach(function(el){io.observe(el)})}
+else qa('.rv-in').forEach(function(el){el.classList.add('in')});
+})();
+</script>
+</body>
+</html>
